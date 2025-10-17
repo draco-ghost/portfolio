@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import code_logo from './../../assets/dragon_logo_1.png';
 import { FaLinkedin } from 'react-icons/fa6';
 import { FaFacebook, FaGithub } from "react-icons/fa";
+import { OpenDeepLink } from '../../util/DeepLinkUtils';
 
 
-const LINKED_IN_URL = "https://www.linkedin.com/in/draco-ghost-173385350";
-const LINKEDIN_APP_URL = "linkedin://in/draco-ghost-173385350"; // Deep link
+const LINKED_IN_URL = "https://www.linkedin.com/in/username-173385350";
+const LINKEDIN_APP_URL = "linkedin://in/username-173385350"; // Deep link
 
-const GITHUB_URL = "https://github.com/draco-ghost";
+const GITHUB_URL = "https://github.com/username";
 const FACEBOOK_URL = "https://web.facebook.com/profile.php?id=61582662980698";
 const FACEBOOK_APP_URL = "fb://profile/61582662980698";
 
@@ -15,6 +16,32 @@ const FACEBOOK_APP_URL = "fb://profile/61582662980698";
 const Contact = () => {
   const [showLinkedIn, setShowLinkedIn] = useState(false);
   const [showFacebookD, setShowFacebookD] = useState(false);
+
+  const isMobi = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+  const handleLinkedIn = async () => {
+    if (isMobi) {
+      // On Mobi, try open directly with fallback
+      await OpenDeepLink(LINKEDIN_APP_URL, LINKED_IN_URL);
+    } else {
+      // On desktop show modal
+      setShowLinkedIn(true);
+    }
+  }
+
+  const handleFacebook = async () => {
+    if (isMobi) {
+      // On Mobi, try open directly with fallback
+      await OpenDeepLink(FACEBOOK_APP_URL, FACEBOOK_URL);
+    } else {
+      // On desktop show modal
+      setShowFacebookD(true);
+    }
+  }
+
+  const handleGithub = () => {
+      window.open(GITHUB_URL, "_blank");
+  };
 
   const handleAppOpen = () => {
     setShowLinkedIn(false);
@@ -34,10 +61,6 @@ const Contact = () => {
   const handleWebOpen = () => {
     setShowLinkedIn(false);
     window.open(LINKED_IN_URL, "_blank");
-  };
-
-  const handleGithub = () => {
-      window.open(GITHUB_URL, "_blank");
   };
 
   const handleFabAppOpen = () => {
@@ -89,7 +112,7 @@ const Contact = () => {
               </div>
               <div className='w-full cursor-pointer text-3xl 3lg:text-4xl gap-10 flex justify-center '>
                 <div className='w-full p-7 md:grid md:grid-cols-2 gap-4 font-mono place-content-center place-items-center'>
-                  <div onClick={() => setShowLinkedIn(true)}
+                  <div onClick={handleLinkedIn}
                     aria-label="Open LinkedIn profile options"
                     role='button'
                     tabIndex={0}
@@ -98,7 +121,7 @@ const Contact = () => {
                     <FaLinkedin className='transition text-3xl md:text-4xl delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-pink-600' />
                     <span>(Talk career, collabs, or networking)</span>
                   </div>
-                  <div onClick={() => setShowFacebookD(true)}
+                  <div onClick={handleFacebook}
                   aria-label='Open Facebook profile'
                   role='button'
                   onKeyDown={(e) => e.key === 'Enter' && showFacebookD(true)}
