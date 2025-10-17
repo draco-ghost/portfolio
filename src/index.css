@@ -15,24 +15,24 @@
   50% { opacity: 0; }
 }
 
+#root {
+  height: 100%;
+}
+
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   width: 100vw;
   min-width: 320px;
 
-  /* fallback for older browser */
-  max-height: 100vh; 
-  
-  /* modern browser with dynamic vh */
-  max-height: 100dvh;
-
-  /* fallback to JS variable --vh if available */
-  max-height: calc(var(--vh, 1vh) * 100);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   
   font-family: 'silkscreen', mono;
   background: black;
+
+  /* fallback to JS variable --vh if available */
+  max-height: calc(var(--vh, 1vh) * 100);
 }
 
 .animate-blink {

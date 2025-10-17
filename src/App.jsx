@@ -34,10 +34,21 @@ function App() {
 
   return (
     <div>
-      <div className='w-screen h-screen max-h-screen'>
+      <div className='w-screen'
+      style={{ 
+        height: 'calc(var(--vh, 1vh) * 100)', 
+        maxHeight: 'calc(var(--vh, 1vh) * 100)',
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+      >
         <Navbar toggleRight={toggleRight} />
         <Rightbar isOpen={isRightEn} isClosed={toggleRight} />
-        <div className='w-screen h-[calc(100vh-40px)] sm:h-[calc(100vh-50px)] md:h-[calc(100vh-70px)] max-h-[calc(100vh-40px)] sm:max-h-[calc(100vh-50px)] md:max-h-[calc(100vh-70px)] overflow-hidden overflow-y-auto'>
+        <div className='flex-grow overflow-y-auto'
+        style={{ 
+          minHeight: 0, // Required for flex overflow scroll
+        }}
+        >
           <Routes>
             <Route path='/' element={<Home /> } />
             <Route path='/about' element={<About /> } />
