@@ -7,7 +7,6 @@ import Project from './Components/pages/Project';
 import Contact from './Components/pages/Contact';
 import Rightbar from './Components/nav/Rightbar';
 import { useEffect, useState } from 'react';
-import Thank from './Components/pages/Thank';
 
 function App() {
 
@@ -44,7 +43,6 @@ function App() {
             <Route path='/about' element={<About /> } />
             <Route path='/projects' element={<Project /> } />
             <Route path='/contact' element={<Contact /> } />
-            <Route path='/thank-you' element={<Thank /> } />
           </Routes>
         </div>
       </div>
