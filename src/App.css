@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+    --breakpoint-llg: 90rem;
+    --breakpoint-3xl: 112rem;
+    --breakpoint-3lg: 160rem;
+    --breakpoint-gg: 185rem;
+    --breakpoint-4xl: 235rem;
+    --breakpoint-5xl: 307rem;
+    --breakpoint-2gg: 344rem;
+}
+
+@media (height < 37rem) { 
+     .contact-div {
+        place-content: initial;
+     }
+}
