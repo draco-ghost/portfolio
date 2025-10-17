@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "postbuild": "cpy-cli dist/index.html dist/404.html",
+    "postbuild": "cpy dist/index.html dist/404.html --parents",
     "predeploy": "npm run build",
     "deploy": "npm run postbuild && gh-pages -d dist"
   },
