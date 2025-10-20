@@ -11,7 +11,7 @@ export default function Navbar({ toggleRight }) {
                 `}>
                 <div className='absolute left-0 flex sm:place-self-center md:ml-3 sm:relative'>
                     <img src={logo} alt="logo" className='h-[40px] sm:h-[50px] md:h-[70px]' />
-                    <div className='place-self-center flex'>
+                    <div className='place-self-center flex font-mono'>
                         <p className='place-self-center md:ml-3 text-green-400 text-sm font-bold'>Draco</p>
                         <p className='ml-1 text-green-400 text-sm font-bold'>Ghost</p>
                     </div>

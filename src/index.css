@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "Silkscreen";
-  src: url('/fonts/Silkscreen-Regular.woff2') format('woff2'),
-       url('/fonts/Silkscreen-Regular.woff') format('woff'),
-       url('/fonts/silkscreen.ttf') format('truetype');
+  font-family: "Caprasimo";
+  src: url('/fonts/Caprasimo-Regular.woff2') format('woff2'),
+       url('/fonts/Caprasimo-Regular.woff') format('woff'),
+       url('/fonts/Caprasimo-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap; /* this tells browser to use fallback font until custom font is loaded */
@@ -29,7 +29,7 @@ body {
   display: flex;
   flex-direction: column;
   
-  font-family: 'silkscreen', mono;
+  font-family: 'caprasimo', mono;
   background: black;
 
   /* fallback to JS variable --vh if available */
@@ -53,7 +53,7 @@ body {
 .cont-content {
   padding: min(0.1rem, 8%);
   width: 100%;
-  height: calc(100dvh-40px);
+  height: 100dvh;
   max-height: calc(100dvh-40px);
 }
 

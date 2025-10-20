@@ -22,7 +22,8 @@ const Contact = () => {
   const handleLinkedIn = () => {
     if (isMobi) {
       // On Mobi, try open directly with fallback
-      OpenDeepLink(LINKEDIN_APP_URL, LINKED_IN_URL);
+      setShowLinkedIn(false);
+      handleLinkedInClick();
     } else {
       // On desktop show modal
       setShowLinkedIn(true);
@@ -88,16 +89,28 @@ const Contact = () => {
     window.open(FACEBOOK_URL, "_blank");
   };
 
+  const handleLinkedInClick = () => {
+    const iframe = document.createElement('iframe');
+      iframe.style.display = "none";
+      iframe.src = LINKEDIN_APP_URL;
+      document.body.appendChild(iframe);
+
+      // Remove ifrfame after short delay to clean up
+      setTimeout(() => {
+        document.body.removeChild(iframe);
+        window.open(LINKED_IN_URL, "_blank");
+      }, 2000);
+  };
+
 
   return (
-    <div className='overflow-hidden'>
-      <div className='text-green-400 w-screen h-[calc(100vh-40px)] sm:h-[calc(100vh-50px)] md:h-[calc(100vh-70px)] max-h-[calc(100vh-40px)] sm:max-h-[calc(100vh-50px)] md:max-h-[calc(100vh-70px)]
-          place-content-center place-items-center'>
-        <div className='h-full w-full lg:flex relative overflow-hidden'>
-          <div className='absolute w-full inset-0 pointer-events-none h-full'>
+    <div className='overflow-hidden w-full h-full'>
+      <div className='text-green-400 w-full h-full'>
+        <div className='relative h-full w-full'>
+          <div className='absolute inset-0 z-0 h-full'>
             <img src={code_logo} alt="" className='h-auto max-h-full' />
           </div>
-          <div className={`contact-div backdrop-blur-3xl cont-content relative z-10 w-full h-full pt-4 flex flex-col
+          <div className={`contact-div backdrop-blur-3xl relative z-10 w-full h-full pt-4 flex flex-col
             overflow-y-auto  max-h-[calc(100vh-40px)] lg:max-h-[calc(100vh-70px)] 
             place-content-center place-items-center`}>
 

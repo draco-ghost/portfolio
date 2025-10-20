@@ -13,5 +13,48 @@
 @media (height < 37rem) { 
      .contact-div {
         place-content: initial;
+        height: fit-content;
      }
+}
+
+@media (max-width: 40rem) {
+    .cont-content {
+        height: calc(100vh-40px);
+        height: calc(100dvh-40px);
+        max-height: calc(100vh-40px);
+        max-height: calc(100dvh-40px);
+    }
+
+    .parent_div {
+        height: 100dvh;
+        max-height: calc(100dvh-40px);
+    }
+}
+
+@media (max-width: 48rem) {
+    .cont-content {
+        height: calc(100vh-50px);
+        height: calc(100dvh-50px);
+        max-height: calc(100vh-50px);
+        max-height: calc(100dvh-50px);
+    }
+
+    .parent_div {
+        height: 100dvh;
+        max-height: calc(100dvh-50px);
+    }
+}
+
+@media (width >= 48rem) { 
+    .cont-content {
+        height: calc(100vh-70px);
+        height: calc(100dvh-70px);
+        max-height: calc(100vh-70px);
+        max-height: calc(100dvh-70px);
+    }
+
+    .parent_div {
+        height: 100dvh;
+        max-height: calc(100dvh-70px);
+    }
 }
