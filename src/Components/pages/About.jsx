@@ -16,12 +16,12 @@ const About = () => {
   return (
     <div>
       <div className='text-green-400 w-full h-[calc(100vh-40px)] sm:h-[calc(100vh-50px)] md:h-[calc(100vh-70px)] max-h-[calc(100vh-40px)] sm:max-h-[calc(100vh-50px)] md:max-h-[calc(100vh-70px)]'>
-        <div className='relative h-full w-full lg:flex overflow-hidden bg-transparent'>
-          <div className='absolute inset-0 lg:relative z-0 h-full lg:w-[40%] lg:place-items-center lg:place-content-center lg:rounded-full llg:w-[50%]'>
-            <img src={code_logo} alt="" className='w-full h-full lg:w-[400px] lg:h-[400px] lg:rounded-full llg:w-full llg:h-full llg:rounded-none llg:object-cover' />
+        <div className='relative h-full w-full overflow-hidden bg-transparent'>
+          <div className='absolute inset-0 z-0 h-full'>
+            <img src={code_logo} alt="" className='w-full h-full' />
           </div>
-          <div className='cont-content relative z-10 w-full lg:w-[60%] lg:h-fit lg:p-4 text-center lg:ml-5 flex flex-col 
-            backdrop-blur-md lg:backdrop-blur-none overflow-y-auto max-h-[calc(100vh-40px)] sm:max-h-[calc(100vh-50px)] md:max-h-[calc(100vh-70px)]
+          <div className='cont-content relative z-10 w-full text-center flex flex-col 
+            backdrop-blur-3xl overflow-y-auto max-h-[calc(100vh-40px)] sm:max-h-[calc(100vh-50px)] md:max-h-[calc(100vh-70px)]
             3lg:place-content-center 3lg:place-items-center 3lg:overflow-hidden 3lg:h-full'>
             <div className='pt-4 pb-4'>
               <div>

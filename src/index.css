@@ -52,6 +52,7 @@ body {
 
 .cont-content {
   padding: min(0.1rem, 8%);
+  width: 100%;
   height: calc(100dvh-40px);
   max-height: calc(100dvh-40px);
 }
