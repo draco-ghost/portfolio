@@ -25,6 +25,7 @@ body {
   min-width: 320px;
 
   height: 100%;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   
@@ -51,6 +52,8 @@ body {
 
 .cont-content {
   padding: min(0.1rem, 8%);
+  height: calc(100dvh-40px);
+  max-height: calc(100dvh-40px);
 }
 
 nav li a.active {

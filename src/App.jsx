@@ -44,7 +44,7 @@ function App() {
       >
         <Navbar toggleRight={toggleRight} />
         <Rightbar isOpen={isRightEn} isClosed={toggleRight} />
-        <div className='flex-grow overflow-y-auto'
+        <div className='flex-grow overflow-y-auto overflow-hidden'
         style={{ 
           minHeight: 0, // Required for flex overflow scroll
         }}

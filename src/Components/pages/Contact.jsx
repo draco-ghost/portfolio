@@ -5,10 +5,10 @@ import { FaFacebook, FaGithub } from "react-icons/fa";
 import { OpenDeepLink } from '../../util/DeepLinkUtils';
 
 
-const LINKED_IN_URL = "https://www.linkedin.com/in/username-173385350";
-const LINKEDIN_APP_URL = "linkedin://in/username-173385350"; // Deep link
+const LINKED_IN_URL = "https://www.linkedin.com/in/draco-ghost-173385350";
+const LINKEDIN_APP_URL = "linkedin://in/draco-ghost-173385350"; // Deep link
 
-const GITHUB_URL = "https://github.com/username";
+const GITHUB_URL = "https://github.com/draco-ghost";
 const FACEBOOK_URL = "https://web.facebook.com/profile.php?id=61582662980698";
 const FACEBOOK_APP_URL = "fb://profile/61582662980698";
 
@@ -19,20 +19,20 @@ const Contact = () => {
 
   const isMobi = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
-  const handleLinkedIn = async () => {
+  const handleLinkedIn = () => {
     if (isMobi) {
       // On Mobi, try open directly with fallback
-      await OpenDeepLink(LINKEDIN_APP_URL, LINKED_IN_URL);
+      OpenDeepLink(LINKEDIN_APP_URL, LINKED_IN_URL);
     } else {
       // On desktop show modal
       setShowLinkedIn(true);
     }
   }
 
-  const handleFacebook = async () => {
+  const handleFacebook = () => {
     if (isMobi) {
       // On Mobi, try open directly with fallback
-      await OpenDeepLink(FACEBOOK_APP_URL, FACEBOOK_URL);
+      OpenDeepLink(FACEBOOK_APP_URL, FACEBOOK_URL);
     } else {
       // On desktop show modal
       setShowFacebookD(true);

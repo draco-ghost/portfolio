@@ -15,7 +15,7 @@ import reactPng from './../../assets/react.svg';
 const About = () => {
   return (
     <div>
-      <div className='text-green-400 w-screen h-[calc(100vh-40px)] sm:h-[calc(100vh-50px)] md:h-[calc(100vh-70px)] max-h-[calc(100vh-40px)] sm:max-h-[calc(100vh-50px)] md:max-h-[calc(100vh-70px)]'>
+      <div className='text-green-400 w-full h-[calc(100vh-40px)] sm:h-[calc(100vh-50px)] md:h-[calc(100vh-70px)] max-h-[calc(100vh-40px)] sm:max-h-[calc(100vh-50px)] md:max-h-[calc(100vh-70px)]'>
         <div className='relative h-full w-full lg:flex overflow-hidden bg-transparent'>
           <div className='absolute inset-0 lg:relative z-0 h-full lg:w-[40%] lg:place-items-center lg:place-content-center lg:rounded-full llg:w-[50%]'>
             <img src={code_logo} alt="" className='w-full h-full lg:w-[400px] lg:h-[400px] lg:rounded-full llg:w-full llg:h-full llg:rounded-none llg:object-cover' />
