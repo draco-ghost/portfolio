@@ -109,7 +109,7 @@ const Contact = () => {
             overflow-y-auto  max-h-[calc(100vh-40px)] lg:max-h-[calc(100vh-70px)] 
             place-content-center place-items-center`}>
 
-          <div className='w-full place-items-center mt-5 justify-center sm:border-t sm:border-b rounded-2xl backdrop-blur-3xl lg:backdrop-blur-none lg:rounded-2xl lg:border'>
+          <div className='w-full sm:bg-black/75 place-items-center mt-5 justify-center sm:border-t sm:border-b rounded-2xl backdrop-blur-3xl lg:backdrop-blur-none lg:rounded-2xl lg:border'>
             <h1 className='font-bold text-2xl 3lg:text-3xl w-fit ml-5 mt-[-20px] sm:bg-black p-2 sm:rounded-2xl'>Contact Me</h1>
             <div className='w-full pl-5 pr-5 pt-2 cursor-pointer font-mono'>
               <div className='text-center'>
