@@ -7,6 +7,8 @@ import Project from './Components/pages/Project';
 import Contact from './Components/pages/Contact';
 import Rightbar from './Components/nav/Rightbar';
 import { useEffect, useState } from 'react';
+import background from './assets/dragon_logo_1.png';
+import Dropmenu from './Components/nav/Dropmenu';
 
 function App() {
 
@@ -28,22 +30,30 @@ function App() {
 
     return () => {
       window.removeEventListener('resize', setVhProperty);
-      window.removeEventListener('orientationchange', setVhProperty);  
+      window.removeEventListener('orientationchange', setVhProperty);
     };
   }, []);
 
   return (
     <div>
-      <div className='w-screen'
-      style={{ 
-        height: 'calc(var(--vh, 1vh) * 100)', 
-        maxHeight: 'calc(var(--vh, 1vh) * 100)',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
+      <div className='w-screen backdrop-blur-3xl'
+        style={{
+          height: 'calc(var(--vh, 1vh) * 100)',
+          maxHeight: 'calc(var(--vh, 1vh) * 100)',
+          display: 'flex',
+          flexDirection: 'column',
+        }}
       >
-        <Navbar toggleRight={toggleRight} />
-        <Rightbar isOpen={isRightEn} isClosed={toggleRight} />
+
+        <div className='relative w-full overflow-hidden '>
+          <div className='absolute inset-0 z-0 h-full'>
+            <img src={background} alt="" className='w-full h-full' />
+          </div>
+          <div className='relative z-10 backdrop-blur-3xl w-full h-full text-center flex flex-col overflow-hidden overflow-y-auto
+                             3lg:text-4xl'>
+            
+            <Navbar toggleRight={toggleRight} isRightEn={isRightEn} />
+        <Dropmenu isOpen={isRightEn} isClosed={toggleRight} />
         <div className='flex-grow cont-content overflow-y-auto overflow-hidden'
         style={{ 
           minHeight: 0, // Required for flex overflow scroll
@@ -56,6 +66,10 @@ function App() {
             <Route path='/contact' element={<Contact /> } />
           </Routes>
         </div>
+
+          </div>
+        </div>
+
       </div>
     </div>
   )

@@ -2,15 +2,17 @@ import React from 'react';
 import logo from './../../assets/dragon_logo.png';
 import { NavLink } from 'react-router-dom';
 import { TiThMenu } from "react-icons/ti";
+import { IoMdClose } from 'react-icons/io';
 
-export default function Navbar({ toggleRight }) {
+export default function Navbar({ toggleRight, isRightEn }) {
     return (
         <div>
             <nav className={`h-[40px] top-0 flex place-content-end sm:h-[50px] md:h-[70px] select-none
-                sm:justify-between cursor-pointer duration-1000 text-xs
-                `}>
+                sm:justify-between sm:px-8 lg:px-20 xl:px-40 llg:px-60 2xl:px-70 3xl:px-110 3lg:px-180 gg:px-200 4xl:px-270
+                5xl:px-420 2gg:px-460 cursor-pointer duration-1000 text-xs relative z-10 w-full
+                ${isRightEn ? "bg-black/70 opacity-100" : "bg-transparent"}`}>
                 <div className='absolute left-0 flex sm:place-self-center md:ml-3 sm:relative'>
-                    <img src={logo} alt="logo" className='h-[40px] sm:h-[50px] md:h-[70px]' />
+                    <img src={logo} alt="logo" className='h-[40px] sm:h-[50px] md:h-[70px] rounded-full' />
                     <div className='place-self-center flex font-mono'>
                         <p className='place-self-center md:ml-3 text-green-400 text-sm font-bold'>Draco</p>
                         <p className='ml-1 text-green-400 text-sm font-bold'>Ghost</p>
@@ -40,7 +42,10 @@ export default function Navbar({ toggleRight }) {
                     </li>
                 </ul>
                 <div className='text-3xl mr-3 sm:hidden'>
-                    <TiThMenu onClick={toggleRight} />
+                    <button onClick={toggleRight}
+                    className='duration-700'>
+                        {isRightEn ? <IoMdClose /> : <TiThMenu /> }
+                    </button>
                 </div>
                 </div>                
             </nav>

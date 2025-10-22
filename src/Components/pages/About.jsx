@@ -1,5 +1,4 @@
 import React from 'react';
-import code_logo from './../../assets/dragon_logo_1.png';
 import check from './../../assets/star-rings.svg';
 import ui from './../../assets/ui-ux-design.png';
 import web from './../../assets/dev-web.svg';
@@ -16,10 +15,6 @@ const About = () => {
   return (
     <div className='w-full h-full'>
       <div className='overflow-hidden text-green-400 w-full'>
-        <div className='relative w-full overflow-hidden '>
-          <div className='absolute inset-0 z-0 h-full'>
-            <img src={code_logo} alt="" className='w-full h-full' />
-          </div>
           <div className='relative z-10 backdrop-blur-3xl w-full h-full text-center flex flex-col overflow-hidden overflow-y-auto
                      3lg:text-4xl'>
             <div className='pt-4 pb-4'>
@@ -129,7 +124,8 @@ const About = () => {
               </div>
             </div>
           </div>
-        </div>
+
+          
       </div>
     </div>
   )
