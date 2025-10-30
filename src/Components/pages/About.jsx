@@ -28,8 +28,9 @@ const About = () => {
                 <h1 className='underline w-[80vw] p-4 bg-zinc-800 lg:bg-black rounded-3xl md:w-[50vw]'>Skills</h1>
               </div>
               <div className='py-4 w-full h-full p-2 3lg:text-2xl'>
-                <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 3xl:grid-cols-3 4xl:grid-cols-4 gap-4'>
-                  <div className='bg-zinc-900 w-full h-full p-4 rounded-3xl hover:bg-zinc-800 cursor-pointer'>
+                <div className='w-full grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 3xl:grid-cols-3 4xl:grid-cols-4 gap-4'>
+                  <div className='bg-zinc-900 relative w-full h-full p-4 rounded-3xl hover:bg-zinc-800 cursor-pointer'>
+                    <div className='outer_1 w-[80px] h-[80px] rounded-full absolute top-1.5 left-2'></div>
                     <img src={ui} alt="" className='w-[64px]' />
                     <h2 className='p-3'>UI/UX Designs</h2>
                     <div className='flex gap-5 p-2 place-items-center hover:bg-zinc-700 hover:rounded-2xl relative group'>
@@ -61,8 +62,9 @@ const About = () => {
                       </div>
                     </div>
                   </div>
-                  <div className='bg-zinc-900 w-full p-2 h-full rounded-3xl hover:bg-zinc-800 cursor-pointer'>
+                  <div className='bg-zinc-900 relative w-full p-2 h-full rounded-3xl hover:bg-zinc-800 cursor-pointer'>
                     <div className='p-4'>
+                      <div className='outer_1 w-[100px] h-[100px] rounded-full absolute top-1 left-1.5'></div>
                       <img src={web} alt="" className='w-[64px]' />
                     </div>
                     <h2 className='p-3'>Web development</h2>
@@ -92,8 +94,9 @@ const About = () => {
                       </div>
                     </div>
                   </div>
-                  <div className='bg-zinc-900 w-full p-4 h-full rounded-3xl hover:bg-zinc-800 cursor-pointer'>
+                  <div className='bg-zinc-900 relative w-full p-4 h-full rounded-3xl hover:bg-zinc-800 cursor-pointer'>
                     <div className='p-4'>
+                      <div className='outer_1 w-[90px] h-[90px] rounded-full absolute top-4 left-3'></div>
                       <img src={mob} alt="" className='w-[64px]' />
                     </div>
                     <h2 className='pt-3 pb-3'>Mobile App development</h2>
@@ -106,8 +109,9 @@ const About = () => {
                       </div>
                     </div>
                   </div>
-                  <div className='bg-zinc-900 w-full p-4 h-full rounded-3xl hover:bg-zinc-800 cursor-pointer 3xl:p-4'>
-                    <div className='p-4 3xl:p-0'>
+                  <div className='bg-zinc-900 relative w-full p-4 h-full rounded-3xl hover:bg-zinc-800 cursor-pointer 3xl:p-4'>
+                    <div className='p-4'>
+                      <div className='outer_1 w-[90px] h-[90px] rounded-full absolute top-4.5 left-4.5'></div>
                       <img src={desk} alt="" className='w-[64px]' />
                     </div>
                     <h2 className='pt-3 pb-3'>Desktop App development</h2>

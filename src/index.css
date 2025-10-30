@@ -30,7 +30,8 @@ body {
   flex-direction: column;
   
   font-family: 'caprasimo', mono;
-  background: black;
+  background: #FF0080;
+background: linear-gradient(23deg,rgba(255, 0, 128, 1) 0%, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 1) 100%);
 
   /* fallback to JS variable --vh if available */
   max-height: calc(var(--vh, 1vh) * 100);
@@ -64,7 +65,7 @@ nav li a.active {
         border-color: transparent transparent red;    
         border-width: 2px; 
         animation: pulse 2s infinite;
-        box-shadow: 0 2px 3px 0 #ff0080;
+        box-shadow: 0 10px 30px 0 #ff0080;
         transition: box-shadow ease-in-out 0,2s
     }
 }
@@ -73,7 +74,7 @@ nav li a.active:hover {
   p {
     color: white;
     border-color: transparent transparent white; 
-    box-shadow: 0 2px 3px 0 white;
+    box-shadow: 0 10px 30px 0 white;
   }
 }
 
@@ -98,3 +99,60 @@ nav li a.active:hover {
     background-color: #ff0080;
 }
 
+
+.outer {
+  border: 10px dotted #009dff;
+  animation: rotate 2s linear infinite;
+}
+
+.outer_1 {
+  border: 10px dotted #ff0080;
+  animation: rotate 4s linear infinite;
+}
+
+.middle {
+  border: 10px dotted white;
+  animation: rotate_anti 2s linear infinite;
+}
+
+.inner {
+  border: 10px dotted #009dff;
+  animation: rotate 2s linear infinite;
+}
+
+.center {
+  border: 10px dotted white;
+  animation: rotate_anti 2s linear infinite;
+}
+
+.center-inner {
+  background: #009dff;
+  border: 10px dotted black;
+  animation: rotate 2s linear infinite;
+}
+
+.img_ring {
+  border: 5px dotted #009dff;
+  animation: rotate 10s linear infinite;
+}
+
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate_anti {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}

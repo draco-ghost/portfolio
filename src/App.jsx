@@ -7,7 +7,7 @@ import Project from './Components/pages/Project';
 import Contact from './Components/pages/Contact';
 import Rightbar from './Components/nav/Rightbar';
 import { useEffect, useState } from 'react';
-import background from './assets/dragon_logo_1.png';
+import background from './assets/tiny_dragon.png';
 import Dropmenu from './Components/nav/Dropmenu';
 
 function App() {
@@ -47,7 +47,6 @@ function App() {
 
         <div className='relative w-full overflow-hidden '>
           <div className='absolute inset-0 z-0 h-full'>
-            <img src={background} alt="" className='w-full h-full' />
           </div>
           <div className='relative z-10 backdrop-blur-3xl w-full h-full text-center flex flex-col overflow-hidden overflow-y-auto
                              3lg:text-4xl'>

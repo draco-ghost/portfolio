@@ -99,20 +99,67 @@ const Project = () => {
   };
 
   return (
-    <div className='overflow-hidden w-full h-full'>
-      <div className='text-green-400 w-full h-full'>
-        <div className='relative z-10 backdrop-blur-3xl w-full h-full overflow-hidden
-                place-content-center place-items-center 3lg:text-4xl'>
-          <p className='border-b rounded-3xl p-[2px_10px] w-fit place-self-center mb-4 shadow-lg shadow-green-700 hover:shadow-pink-600 hover:text-pink-600 cursor-pointer'>
-            Coming soon
-          </p>
+    <div className='overflow-hidden h-full'>
+      <div className='text-green-400 w-full h-full overflow-hidden'>
+        <div className='relative flex flex-col z-10 backdrop-blur-3xl w-full h-full overflow-hidden
+              place-content-center place-items-center 3lg:text-4xl'>
+          <div className='flex flex-col justify-between w-full h-full place-content-centeroverflow-hidden
+              overflow-y-auto'>
+            <div>
+              <p className='border-b rounded-3xl p-[2px_10px] w-fit place-self-center mb-4 shadow-lg shadow-green-700 hover:shadow-pink-600 hover:text-pink-600 cursor-pointer'>
+              Coming soon
+            </p>
+            </div>
 
-          <div className='absolute bottom-0 w-full'>
-            <Footer setShowFacebookD={setShowFacebookD}
-              setShowLinkedIn={setShowLinkedIn}
-              handleLinkedIn={handleLinkedIn}
-              handleFacebook={handleFacebook}
-              handleGithub={handleGithub} />
+            <div className='w-full relative place-content-center place-items-center'>
+              <div className='w-full h-full relative place-content-center place-items-center'>
+                <div className='outer absolute top-1/2 w-[200px] h-[200px]
+                  transform -translate-y-1/2
+                  z-50 rounded-full bg-zinc-800  shadow-lg
+                  md:left-1/2 md:-translate-x-1/2
+                  place-content-center place-items-center'>
+
+                </div>
+                <div className='middle absolute top-1/2 w-[160px] h-[160px]
+                  transform -translate-y-1/2
+                  z-50 rounded-full bg-zinc-800  shadow-lg
+                  md:left-1/2 md:-translate-x-1/2
+                  place-content-center place-items-center'>
+
+                </div>
+                <div className='inner absolute top-1/2 w-[120px] h-[120px]
+                  transform -translate-y-1/2
+                  z-50 rounded-full bg-zinc-800  shadow-lg
+                  md:left-1/2 md:-translate-x-1/2
+                  place-content-center place-items-center'>
+
+                </div>
+                <div className='center absolute top-1/2 w-[80px] h-[80px]
+                  transform -translate-y-1/2
+                  z-50 rounded-full bg-zinc-800  shadow-lg
+                  md:left-1/2 md:-translate-x-1/2
+                  place-content-center place-items-center'>
+
+                </div>
+
+                <div className='center-inner absolute top-1/2 w-[40px] h-[40px]
+                  transform -translate-y-1/2
+                  z-50 rounded-full bg-zinc-800  shadow-lg
+                  md:left-1/2 md:-translate-x-1/2
+                  place-content-center place-items-center'>
+
+                </div>
+
+              </div>
+            </div>
+
+            <div className='w-full'>
+              <Footer setShowFacebookD={setShowFacebookD}
+                setShowLinkedIn={setShowLinkedIn}
+                handleLinkedIn={handleLinkedIn}
+                handleFacebook={handleFacebook}
+                handleGithub={handleGithub} />
+            </div>
           </div>
 
           {showLinkedIn && (

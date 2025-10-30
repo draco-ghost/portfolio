@@ -14,7 +14,7 @@ const Footer = ({ setShowFacebookD, setShowLinkedIn, handleLinkedIn, handleFaceb
                     <p>© 2025 Draco Ghost. All rights reserved.</p>
                 </div>
 
-                <div className='md:size-10 flex mb-2 md:mb-0 md:grow-4 text-xl gap-4 place-content-center place-items-center'>
+                <div className='hidden md:size-10 md:flex mb-2 md:mb-0 md:grow-4 text-xl gap-4 place-content-center place-items-center'>
                     <div onClick={handleLinkedIn}
                         aria-label="Open LinkedIn profile options"
                         role='button'

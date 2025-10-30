@@ -150,7 +150,7 @@ export default function Home() {
 
           </div>
 
-          <div className='footer-home absolute bottom-0 w-full md:p-4'>
+          <div className='footer-home relative md:absolute md:bottom-0 w-full md:p-4'>
             <Footer setShowFacebookD={setShowFacebookD}
               setShowLinkedIn={setShowLinkedIn}
               handleLinkedIn={handleLinkedIn}

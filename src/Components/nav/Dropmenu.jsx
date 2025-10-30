@@ -26,7 +26,7 @@ const Dropmenu = ({ isOpen, isClosed }) => {
         <div>
             <div className={`absolute left-0 top-10 w-screen px-6 py-4 z-50
       transition-all duration-1000 ease-in-out'
-      ${isOpen ? "visible bg-black/70 opacity-100" : "invisible opacity-0"}`}>
+      ${isOpen ? "visible bg-black/90 opacity-100" : "invisible opacity-0"}`}>
                 <div className='place-items-center text-white backdrop-blur-3xl'>
                     <ul className='w-full'>
                         <li onClick={isClosed}>

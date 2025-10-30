@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaLinkedin } from 'react-icons/fa6';
-import { FaFacebook, FaGithub } from "react-icons/fa";
+import { FaCoffee, FaFacebook, FaGithub } from "react-icons/fa";
 import { OpenDeepLink } from '../../util/DeepLinkUtils';
 
 
@@ -11,10 +11,13 @@ const GITHUB_URL = "https://github.com/draco-ghost";
 const FACEBOOK_URL = "https://web.facebook.com/profile.php?id=61582662980698";
 const FACEBOOK_APP_URL = "fb://profile/61582662980698";
 
+const KOFI_URL = "https://ko-fi.com/draco_ghost";
+
 
 const Contact = () => {
   const [showLinkedIn, setShowLinkedIn] = useState(false);
   const [showFacebookD, setShowFacebookD] = useState(false);
+  const [showKofi, setShowKofi] = useState(false);
 
   const isMobi = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
@@ -101,6 +104,10 @@ const Contact = () => {
     }, 2000);
   };
 
+  const handleKofi = () => {
+    window.open(KOFI_URL, "_blank");
+  };
+
 
   return (
     <div className='overflow-hidden w-full h-full'>
@@ -127,7 +134,7 @@ const Contact = () => {
                   onKeyDown={(e) => e.key === 'Enter' && setShowLinkedIn(true)}
                   className='flex flex-col text-xs md:text-base place-items-center gap-4'>
                   <FaLinkedin className='transition text-3xl md:text-4xl delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-pink-600' />
-                  <span>(Talk career, collabs, or networking)</span>
+                  <span className='mb-2'>(Talk career, collabs, or networking)</span>
                 </div>
                 <div onClick={handleFacebook}
                   aria-label='Open Facebook profile'
@@ -135,15 +142,25 @@ const Contact = () => {
                   onKeyDown={(e) => e.key === 'Enter' && showFacebookD(true)}
                   className='flex flex-col text-xs md:text-base place-items-center gap-4'>
                   <FaFacebook className='transition text-3xl md:text-4xl delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-pink-600' />
-                  <span>(For social convos and updates)</span>
+                  <span className='mb-2'>(For social convos and updates)</span>
                 </div>
                 <div onClick={handleGithub}
                   aria-label='Open Github profile'
                   role='button'
-                  onKeyDown={handleGithub}
-                  className='flex flex-col text-xs md:text-base place-items-center gap-4 col-span-2'>
+                  onKeyDown={(e) => e.key === 'Enter' && handleGithub(e)}
+                  className='flex flex-col text-xs md:text-base place-items-center gap-4'>
                   <FaGithub className='transition text-3xl md:text-4xl delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-pink-600' />
-                  <span>(See what I'm building)</span>
+                  <span className='mb-2'>(See what I'm building)</span>
+                </div>
+
+                <div onClick={handleKofi}
+                aria-label="Toggle Ko-fi support widget"
+                role="button"
+                onKeyDown={(e) => e.key === 'Enter' && handleKofi(e)}
+                className='flex flex-col text-xs md:text-base place-items-center gap-4'>
+                  <FaCoffee className='transition text-3xl md:text-4xl delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-pink-600' />
+                  <span>(For my supporters on Ko-fi)</span>
+
                 </div>
 
                 {showLinkedIn && (
