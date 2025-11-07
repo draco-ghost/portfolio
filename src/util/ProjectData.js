@@ -18,52 +18,5 @@ export const cardsData = [
       background: Blocker_bg,
       app_preview: Blocker_app,
     },
-    {
-      app_name: "Blocker App",
-      description: "BlockerApp is a lightweight Windows desktop application designed to help you stay focused by blocking distracting websites.",
-      o: true,
-      app_link: {
-        repo: BLOCK_GIT,
-        release: BLOCK_DOWNLOAD,
-        source: "/p/source",
-      },
-      background: Blocker_bg,
-      app_preview: Blocker_app,
-    },
-    {
-      app_name: "Blocker App",
-      description: "BlockerApp is a lightweight Windows desktop application designed to help you stay focused by blocking distracting websites.",
-      o: true,
-      app_link: {
-        repo: BLOCK_GIT,
-        release: BLOCK_DOWNLOAD,
-        source: "/p/source",
-      },
-      background: Blocker_bg,
-      app_preview: Blocker_app,
-    },
-    {
-      app_name: "Blocker App",
-      description: "BlockerApp is a lightweight Windows desktop application designed to help you stay focused by blocking distracting websites.",
-      o: true,
-      app_link: {
-        repo: BLOCK_GIT,
-        release: BLOCK_DOWNLOAD,
-        source: "/p/source",
-      },
-      background: Blocker_bg,
-      app_preview: Blocker_app,
-    },
-    {
-      app_name: "Blocker App",
-      description: "BlockerApp is a lightweight Windows desktop application designed to help you stay focused by blocking distracting websites.",
-      o: true,
-      app_link: {
-        repo: BLOCK_GIT,
-        release: BLOCK_DOWNLOAD,
-        source: "/p/source",
-      },
-      background: Blocker_bg,
-      app_preview: Blocker_app,
-    },
+    
 ];
