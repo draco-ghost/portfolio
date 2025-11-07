@@ -2,7 +2,7 @@ import React from 'react';
 import { FaLinkedin } from "react-icons/fa6";
 import { FaFacebook, FaGithub } from 'react-icons/fa';
 
-const Footer = ({ setShowFacebookD, setShowLinkedIn, handleLinkedIn, handleFacebook, handleGithub }) => {
+const Footer = ({ setOpenDialog, handleLinkedIn, handleFacebook, handleGithub }) => {
     return (
         <div>
             <div className='block w-full md:flex'>
@@ -19,14 +19,14 @@ const Footer = ({ setShowFacebookD, setShowLinkedIn, handleLinkedIn, handleFaceb
                         aria-label="Open LinkedIn profile options"
                         role='button'
                         tabIndex={0}
-                        onKeyDown={(e) => e.key === 'Enter' && setShowLinkedIn(true)}
+                        onKeyDown={(e) => e.key === 'Enter' && setOpenDialog('linkedin')}
                         className='flex flex-col place-items-center gap-4'>
                         <FaLinkedin className='transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-pink-600' />
                     </div>
                     <div onClick={handleFacebook}
                         aria-label='Open Facebook profile'
                         role='button'
-                        onKeyDown={(e) => e.key === 'Enter' && setShowFacebookD(true)}
+                        onKeyDown={(e) => e.key === 'Enter' && setOpenDialog('facebook')}
                         className='flex flex-col place-items-center gap-4'>
                         <FaFacebook className='transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-pink-600' />
                     </div>

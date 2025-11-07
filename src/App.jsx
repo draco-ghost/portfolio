@@ -9,6 +9,7 @@ import Rightbar from './Components/nav/Rightbar';
 import { useEffect, useState } from 'react';
 import background from './assets/tiny_dragon.png';
 import Dropmenu from './Components/nav/Dropmenu';
+import Source from './Components/pages/Source';
 
 function App() {
 
@@ -49,7 +50,7 @@ function App() {
           <div className='absolute inset-0 z-0 h-full'>
           </div>
           <div className='relative z-10 backdrop-blur-3xl w-full h-full text-center flex flex-col overflow-hidden overflow-y-auto
-                             3lg:text-4xl'>
+                             '>
             
             <Navbar toggleRight={toggleRight} isRightEn={isRightEn} />
         <Dropmenu isOpen={isRightEn} isClosed={toggleRight} />
@@ -61,8 +62,9 @@ function App() {
           <Routes>
             <Route path='/' element={<Home /> } />
             <Route path='/about' element={<About /> } />
-            <Route path='/projects' element={<Project /> } />
+            <Route path='/projects/*' element={<Project /> } />
             <Route path='/contact' element={<Contact /> } />
+            <Route path='/p/source' element={<Source /> } />
           </Routes>
         </div>
 

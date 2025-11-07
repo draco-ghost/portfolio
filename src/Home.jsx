@@ -12,20 +12,17 @@ const FACEBOOK_URL = "https://web.facebook.com/profile.php?id=61582662980698";
 const FACEBOOK_APP_URL = "fb://profile/61582662980698";
 
 export default function Home() {
-  const [showLinkedIn, setShowLinkedIn] = useState(false);
-  const [showFacebookD, setShowFacebookD] = useState(false);
+  const [openDialog, setOpenDialog] = useState(null);
 
   const isMobi = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
   const handleLinkedIn = () => {
     if (isMobi) {
       // On Mobi, try open directly with fallback
-      closeAllModals();
       handleLinkedInClick();
     } else {
       // On desktop show modal
-      closeAllModals();
-      setShowLinkedIn(true);
+      setOpenDialog('linkedin');
     }
   }
 
@@ -35,22 +32,20 @@ export default function Home() {
       OpenDeepLink(FACEBOOK_APP_URL, FACEBOOK_URL);
     } else {
       // On desktop show modal
-      closeAllModals();
-      setShowFacebookD(true);
+      setOpenDialog('facebook');
     }
   }
 
-  const closeAllModals = () => {
-    setShowLinkedIn(false);
-    setShowFacebookD(false);
-  };
+  const closeDialog = () => {
+    setOpenDialog(null);
+  }
 
   const handleGithub = () => {
     window.open(GITHUB_URL, "_blank");
   };
 
   const handleAppOpen = () => {
-    setShowLinkedIn(false);
+    closeDialog();
 
     // Try to open linkedIn app via hidden iframe deep link
     const iframe = document.createElement('iframe');
@@ -65,12 +60,12 @@ export default function Home() {
   };
 
   const handleWebOpen = () => {
-    setShowLinkedIn(false);
+    closeDialog();
     window.open(LINKED_IN_URL, "_blank");
   };
 
   const handleFabAppOpen = () => {
-    setShowFacebookD(false);
+    closeDialog();
 
     const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
@@ -111,29 +106,29 @@ export default function Home() {
     <div className='overflow-hidden w-full h-full'>
       <div className='text-green-400 w-full h-full'>
         <div className='w-full h-full overflow-hidden
-            place-content-center place-items-center 3lg:text-4xl'>
+            place-content-center place-items-center'>
           <div className='backdrop-blur-3xl'>
             <p className='border-b rounded-3xl p-[2px_10px] w-fit place-self-center mb-4 shadow-lg shadow-green-700 hover:shadow-pink-600 hover:text-pink-600 cursor-pointer'>
               Hi I'm
             </p>
-            <p className='border-b rounded-3xl p-[2px_10px] w-fit place-self-center mb-5 shadow-lg shadow-green-700 hover:shadow-pink-600 hover:text-pink-600 cursor-pointer'>
+            <h3 className='border-b rounded-3xl p-[2px_10px] w-fit place-self-center mb-5 shadow-lg shadow-green-700 hover:shadow-pink-600 hover:text-pink-600 cursor-pointer'>
               Draco Ghost
-            </p>
+            </h3>
             <TypeWrite />
-            <div className='w-full cursor-pointer text-3xl 3lg:text-4xl gap-10 flex justify-center '>
+            <div className='w-full cursor-pointer gap-10 flex justify-center '>
               <div className='flex w-full p-10 place-content-center gap-5 place-items-center'>
                 <div onClick={handleLinkedIn}
                   aria-label="Open LinkedIn profile options"
                   role='button'
                   tabIndex={0}
-                  onKeyDown={(e) => e.key === 'Enter' && setShowLinkedIn(true)}
+                  onKeyDown={(e) => e.key === 'Enter' && setOpenDialog('linkedin')}
                   className='flex flex-col text-xs md:text-base place-items-center gap-4'>
                   <FaLinkedin className='transition text-3xl md:text-4xl delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-pink-600' />
                 </div>
                 <div onClick={handleFacebook}
                   aria-label='Open Facebook profile'
                   role='button'
-                  onKeyDown={(e) => e.key === 'Enter' && setShowFacebookD(true)}
+                  onKeyDown={(e) => e.key === 'Enter' && setOpenDialog('facebook')}
                   className='flex flex-col text-xs md:text-base place-items-center gap-4'>
                   <FaFacebook className='transition text-3xl md:text-4xl delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-pink-600' />
                 </div>
@@ -151,23 +146,22 @@ export default function Home() {
           </div>
 
           <div className='footer-home relative md:absolute md:bottom-0 w-full md:p-4'>
-            <Footer setShowFacebookD={setShowFacebookD}
-              setShowLinkedIn={setShowLinkedIn}
+            <Footer setOpenDialog={setOpenDialog}
               handleLinkedIn={handleLinkedIn}
               handleFacebook={handleFacebook}
               handleGithub={handleGithub} />
           </div>
 
-          {showLinkedIn && (
-            <div onClick={() => setShowLinkedIn(false)}
+          {openDialog === 'linkedin' && (
+            <div onClick={closeDialog}
               role='dialog'
               aria-modal="true"
               aria-labelledby='linkedin-modal-title'
               className='absolute top-1/2 left-0 w-full 
-                                  transform -translate-y-1/2 
-                                  z-50 rounded-3xl bg-zinc-800 p-[5px_20px] shadow-lg
-                                  md:left-1/2 md:-translate-x-1/2
-                                  md:w-[80%]'>
+                  transform -translate-y-1/2 
+                  z-50 rounded-3xl bg-zinc-800 p-[5px_20px] shadow-lg
+                  md:left-1/2 md:-translate-x-1/2
+                  md:w-[80%]'>
               <div onClick={(e) => e.stopPropagation()}
                 className='flex flex-col font-mono text-base p-2 gap-2 place-content-center place-items-center text-white'>
                 <div className='text-center'>
@@ -187,7 +181,7 @@ export default function Home() {
                     className='p-[2px_15px] bg-blue-500 hover:bg-[#ff0080] rounded-3xl'>Open in web</button>
                 </div>
                 <div>
-                  <button onClick={() => setShowLinkedIn(false)}
+                  <button onClick={closeDialog}
                     className='p-[2px_15px] bg-blue-500 hover:bg-[#ff0080] rounded-3xl'>
                     Cancel
                   </button>
@@ -196,16 +190,16 @@ export default function Home() {
             </div>
           )}
 
-          {showFacebookD && (
-            <div onClick={() => setShowFacebookD(false)}
+          {openDialog === 'facebook' && (
+            <div onClick={closeDialog}
               role='dialog'
               aria-modal="true"
               aria-labelledby='facebook-modal-title'
               className='absolute top-1/2 left-0 w-full 
-                                  transform -translate-y-1/2 
-                                  z-50 rounded-3xl bg-zinc-800 p-[5px_20px] shadow-lg
-                                  md:left-1/2 md:-translate-x-1/2
-                                  md:w-[80%]'>
+                  transform -translate-y-1/2 
+                  z-50 rounded-3xl bg-zinc-800 p-[5px_20px] shadow-lg
+                  md:left-1/2 md:-translate-x-1/2
+                  md:w-[80%]'>
               <div onClick={(e) => e.stopPropagation()}
                 className='flex flex-col font-mono text-base p-2 gap-2 place-content-center place-items-center text-white'>
                 <div className='text-center'>
@@ -225,7 +219,7 @@ export default function Home() {
                     className='p-[2px_15px] bg-blue-500 hover:bg-[#ff0080] rounded-3xl'>Open in web</button>
                 </div>
                 <div>
-                  <button onClick={() => setShowFacebookD(false)}
+                  <button onClick={closeDialog}
                     className='p-[2px_15px] bg-blue-500 hover:bg-[#ff0080] rounded-3xl'>
                     Cancel
                   </button>

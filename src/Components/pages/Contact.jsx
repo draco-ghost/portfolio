@@ -15,20 +15,17 @@ const KOFI_URL = "https://ko-fi.com/draco_ghost";
 
 
 const Contact = () => {
-  const [showLinkedIn, setShowLinkedIn] = useState(false);
-  const [showFacebookD, setShowFacebookD] = useState(false);
-  const [showKofi, setShowKofi] = useState(false);
+  const [openDialog, setOpenDialog] = useState(null);
 
   const isMobi = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
   const handleLinkedIn = () => {
     if (isMobi) {
       // On Mobi, try open directly with fallback
-      setShowLinkedIn(false);
       handleLinkedInClick();
     } else {
       // On desktop show modal
-      setShowLinkedIn(true);
+      setOpenDialog('linkedin');
     }
   }
 
@@ -38,8 +35,12 @@ const Contact = () => {
       OpenDeepLink(FACEBOOK_APP_URL, FACEBOOK_URL);
     } else {
       // On desktop show modal
-      setShowFacebookD(true);
+      setOpenDialog('facebook');
     }
+  }
+
+  const closeDialog = () => {
+    setOpenDialog(null);
   }
 
   const handleGithub = () => {
@@ -47,7 +48,7 @@ const Contact = () => {
   };
 
   const handleAppOpen = () => {
-    setShowLinkedIn(false);
+    closeDialog();
 
     // Try to open linkedIn app via hidden iframe deep link
     const iframe = document.createElement('iframe');
@@ -62,12 +63,12 @@ const Contact = () => {
   };
 
   const handleWebOpen = () => {
-    setShowLinkedIn(false);
+    closeDialog();
     window.open(LINKED_IN_URL, "_blank");
   };
 
   const handleFabAppOpen = () => {
-    setShowFacebookD(false);
+    closeDialog();
 
     const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
@@ -116,8 +117,8 @@ const Contact = () => {
             overflow-y-auto  max-h-[calc(100vh-40px)] lg:max-h-[calc(100vh-70px)] 
             place-content-center place-items-center`}>
 
-          <div className='w-full sm:bg-black/75 place-items-center mt-5 justify-center sm:border-t sm:border-b rounded-2xl backdrop-blur-3xl lg:backdrop-blur-none lg:rounded-2xl lg:border'>
-            <h1 className='font-bold text-2xl 3lg:text-3xl w-fit ml-5 mt-[-20px] sm:bg-black p-2 sm:rounded-2xl'>Contact Me</h1>
+          <div className='sm:bg-black/75 place-items-center mt-5 justify-center sm:border-t sm:border-b rounded-2xl backdrop-blur-3xl lg:backdrop-blur-none lg:rounded-2xl lg:border'>
+            <h1 className='font-bold w-fit ml-5 mt-[-20px] sm:bg-black p-2 sm:rounded-2xl'>Contact Me</h1>
             <div className='w-full pl-5 pr-5 pt-2 cursor-pointer font-mono'>
               <div className='text-center'>
                 <p>Let's Connect</p>
@@ -125,13 +126,13 @@ const Contact = () => {
                 <p>Find me on the platforms below, whether you want to talk code, design, or community</p>
               </div>
             </div>
-            <div className='w-full cursor-pointer text-3xl 3lg:text-4xl gap-10 flex justify-center '>
+            <div className='w-full cursor-pointer gap-10 flex justify-center '>
               <div className='w-full p-7 md:grid md:grid-cols-2 gap-4 font-mono place-content-center place-items-center'>
                 <div onClick={handleLinkedIn}
                   aria-label="Open LinkedIn profile options"
                   role='button'
                   tabIndex={0}
-                  onKeyDown={(e) => e.key === 'Enter' && setShowLinkedIn(true)}
+                  onKeyDown={(e) => e.key === 'Enter' && setOpenDialog('linkedin')}
                   className='flex flex-col text-xs md:text-base place-items-center gap-4'>
                   <FaLinkedin className='transition text-3xl md:text-4xl delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-pink-600' />
                   <span className='mb-2'>(Talk career, collabs, or networking)</span>
@@ -139,7 +140,7 @@ const Contact = () => {
                 <div onClick={handleFacebook}
                   aria-label='Open Facebook profile'
                   role='button'
-                  onKeyDown={(e) => e.key === 'Enter' && showFacebookD(true)}
+                  onKeyDown={(e) => e.key === 'Enter' && setOpenDialog('facebook')}
                   className='flex flex-col text-xs md:text-base place-items-center gap-4'>
                   <FaFacebook className='transition text-3xl md:text-4xl delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-pink-600' />
                   <span className='mb-2'>(For social convos and updates)</span>
@@ -154,17 +155,17 @@ const Contact = () => {
                 </div>
 
                 <div onClick={handleKofi}
-                aria-label="Toggle Ko-fi support widget"
-                role="button"
-                onKeyDown={(e) => e.key === 'Enter' && handleKofi(e)}
-                className='flex flex-col text-xs md:text-base place-items-center gap-4'>
+                  aria-label="Toggle Ko-fi support widget"
+                  role="button"
+                  onKeyDown={(e) => e.key === 'Enter' && handleKofi(e)}
+                  className='flex flex-col text-xs md:text-base place-items-center gap-4'>
                   <FaCoffee className='transition text-3xl md:text-4xl delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:scale-110 hover:text-pink-600' />
                   <span>(For my supporters on Ko-fi)</span>
 
                 </div>
 
-                {showLinkedIn && (
-                  <div onClick={() => setShowLinkedIn(false)}
+                {openDialog === 'linkedin' && (
+                  <div onClick={closeDialog}
                     role='dialog'
                     aria-modal="true"
                     aria-labelledby='linkedin-modal-title'
@@ -192,7 +193,7 @@ const Contact = () => {
                           className='p-[2px_15px] bg-blue-500 hover:bg-[#ff0080] rounded-3xl'>Open in web</button>
                       </div>
                       <div>
-                        <button onClick={() => setShowLinkedIn(false)}
+                        <button onClick={closeDialog}
                           className='p-[2px_15px] bg-blue-500 hover:bg-[#ff0080] rounded-3xl'>
                           Cancel
                         </button>
@@ -201,8 +202,8 @@ const Contact = () => {
                   </div>
                 )}
 
-                {showFacebookD && (
-                  <div onClick={() => setShowFacebookD(false)}
+                {openDialog === 'facebook' && (
+                  <div onClick={closeDialog}
                     role='dialog'
                     aria-modal="true"
                     aria-labelledby='facebook-modal-title'
@@ -230,7 +231,7 @@ const Contact = () => {
                           className='p-[2px_15px] bg-blue-500 hover:bg-[#ff0080] rounded-3xl'>Open in web</button>
                       </div>
                       <div>
-                        <button onClick={() => setShowFacebookD(false)}
+                        <button onClick={closeDialog}
                           className='p-[2px_15px] bg-blue-500 hover:bg-[#ff0080] rounded-3xl'>
                           Cancel
                         </button>

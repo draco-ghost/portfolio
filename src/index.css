@@ -19,6 +19,10 @@
   height: 100%;
 }
 
+html {
+  font-size: clamp(14px, 2vw, 18px);
+}
+
 body {
   margin: 0;
   width: 100vw;
@@ -30,11 +34,27 @@ body {
   flex-direction: column;
   
   font-family: 'caprasimo', mono;
-  background: #FF0080;
-background: linear-gradient(23deg,rgba(255, 0, 128, 1) 0%, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 1) 100%);
+  background: linear-gradient(23deg,rgba(255, 0, 128, 1) 0%, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 1) 100%);
 
   /* fallback to JS variable --vh if available */
   max-height: calc(var(--vh, 1vh) * 100);
+
+}
+
+h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+h2 {
+  font-size: clamp(1.25rem, 3.5vw, 2rem);
+}
+
+h3 {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+p {
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
 }
 
 .animate-blink {

@@ -16,8 +16,9 @@
         height: fit-content;
      }
 
-     .footer-home {
-
+     .source-div {
+        place-content: initial;
+        height: fit-content;
      }
 }
 
