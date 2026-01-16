@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import Blocker_app from '../../assets/Blocker_App.png';
 import Blocker_bg from '../../assets/Blocker_App1.png';
 import { useNavigate } from 'react-router-dom';
+import { ClipLoader } from 'react-spinners';
+import ProjectCards from '../../util/ProjectCards';
+import { cardsData } from '../../util/ProjectData';
 
 const BLOCK_GIT = "https://github.com/draco-ghost/blocker_app";
 const BLOCK_DOWNLOAD = "https://github.com/draco-ghost/blocker_app/releases";
@@ -20,7 +23,7 @@ const Project = () => {
 
   const handleSource = () => {
     navigate('/p/source')
-    
+
   };
 
 
@@ -31,8 +34,8 @@ const Project = () => {
               place-content-center place-items-center'>
           <div className='flex flex-col w-full h-full overflow-hidden
               overflow-y-auto p-2 place-content-center place-items-center'>
-            
-            {/* for single project display*/}
+
+            {/* for single project display
             <div className='flex flex-col gap-2 mt-1 mb-1 sm:place-items-center
                md:w-[80%] lg:w-[70%] xl:w-[60%] llg:w-[50%] 3lg:w-[30%] text-white'>
 
@@ -47,13 +50,11 @@ const Project = () => {
                   Blocker App
                 </p>
                 <div className='w-full h-[200px]'>
-                  <img src={Blocker_app} alt="" className='bg-amber-200 w-full h-full bg-cover' />
+                  <img src={app_preview} alt={`${app_name} preview`} className='bg-amber-200 w-full h-full bg-cover' />
                 </div>
 
-                <div className='bg-cover
-                  place-content-center place-items-center'
-
-                  style={{ backgroundImage: `url(${Blocker_bg})` }}>
+                <div className='bg-cover bg-zinc-800
+                  place-content-center place-items-center'>
 
                   <div className='flex flex-col gap-2 bg-black/60 p-2 md:p-4'>
                     <p>
@@ -96,13 +97,14 @@ const Project = () => {
               </div>
 
             </div>
+            */}
 
-            {/* For many projects display
+            {/* For many projects display*/}
             <div className='flex flex-col w-full h-full overflow-hidden
               overflow-y-auto p-2 sm:p-4 md:p-6'>
 
-              <div className='flex flex-col gap-4 w-full mt-1 mb-1
-                md:inline-grid md:gap-4 md:grid-cols-[repeat(auto-fit,minmax(300px,1fr))] 
+              <div className='flex flex-col items-center gap-4 w-full mt-1 mb-1
+                md:grid md:grid-flow-row md:justify-start md:gap-4 md:grid-cols-[repeat(auto-fit,minmax(400px,1fr))]  
                 3lg:grid-cols-[repeat(auto-fit,minmax(600px,auto))] justify-items-center'>
 
                 {cardsData.map((proj, index) => (
@@ -112,7 +114,6 @@ const Project = () => {
               </div>
 
             </div>
-            */}
 
           </div>
 

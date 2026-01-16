@@ -5,9 +5,7 @@ import Navbar from './Components/nav/Navbar';
 import About from './Components/pages/About';
 import Project from './Components/pages/Project';
 import Contact from './Components/pages/Contact';
-import Rightbar from './Components/nav/Rightbar';
 import { useEffect, useState } from 'react';
-import background from './assets/tiny_dragon.png';
 import Dropmenu from './Components/nav/Dropmenu';
 import Source from './Components/pages/Source';
 

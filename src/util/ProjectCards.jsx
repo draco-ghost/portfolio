@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { HashLoader } from 'react-spinners';
 
 const ProjectCards = ({ project }) => {
 
+    const [loading, setLoading] = useState(true);
+
     const navigate = useNavigate();
 
-    const { app_name, description, o, app_link, background, app_preview } = project
+    const { app_name, description, o, app_link, app_preview } = project
 
     const openLink = (url) => window.open(url, "_blank")
 
@@ -18,7 +21,7 @@ const ProjectCards = ({ project }) => {
     };
 
     return (
-        <div>
+        <div className='w-full max-w-[600px]'>
             <div className='flex flex-col bg-zinc-800 rounded-3xl relative 
                       shadow-md shadow-blue-600 overflow-hidden select-none
                       transition delay-150 duration-300 
@@ -29,14 +32,28 @@ const ProjectCards = ({ project }) => {
                         place-content-center place-items-center'>
                     {app_name}
                 </p>
-                <div className='w-full h-[200px]'>
-                    <img src={app_preview} alt={`${app_name} preview`} className='bg-amber-200 w-full h-full bg-cover' />
+                <div className='w-full h-[200px] relative'>
+                    {loading && (
+                        <div className='flex justify-center items-center h-full'>
+                            <HashLoader
+                                color='#ff0080'
+                                loading={loading}
+                                size={100}
+                                aria-label='Loading Spinner'
+                                data-testid="loader"
+                            />
+                        </div>
+                    )} 
+                    
+                    <img src={app_preview} 
+                    alt={`${app_name} preview`} 
+                    className={`bg-zinc-800 w-full h-full bg-cover ${loading ? 'hidden' : ''}`} 
+                    onLoad={() => setLoading(false)}/>
+                    
                 </div>
 
                 <div className='bg-cover
-                        place-content-center place-items-center'
-
-                    style={{ backgroundImage: `url(${background})` }}>
+                        place-content-center place-items-center bg-zinc-800'>
 
                     <div className='flex flex-col gap-2 bg-black/60 p-2 md:p-4'>
                         <p>{description}</p>
