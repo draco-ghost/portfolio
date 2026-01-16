@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { trackOutbound } from '../../util/umami_track';
 
 
 const KOFI = "https://ko-fi.com/draco_ghost";
@@ -7,6 +8,7 @@ const KOFI = "https://ko-fi.com/draco_ghost";
 const Source = () => {
 
     const handleKofi = () => {
+        trackOutbound(KOFI);
         window.open(KOFI, "_blank");
     };
 

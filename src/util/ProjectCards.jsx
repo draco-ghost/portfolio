@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { HashLoader } from 'react-spinners';
+import { trackOutbound } from './umami_track';
 
 const ProjectCards = ({ project }) => {
 
@@ -10,15 +11,22 @@ const ProjectCards = ({ project }) => {
 
     const { app_name, description, o, app_link, app_preview } = project
 
-    const openLink = (url) => window.open(url, "_blank")
-
+    const openLink = (url) => {
+        trackOutbound(url);
+        window.open(url, "_blank");
+    }
     const sourceL = (url) => {
+        trackOutbound(url);
         if (o == true) {
             navigate(url)
         } else {
             window.open(url, "_blank")
         }
     };
+
+    const previewImage = (app_preview) => {
+        navigate('/p/image', { state: { app_preview } })
+    }
 
     return (
         <div className='w-full max-w-[600px]'>
@@ -48,7 +56,9 @@ const ProjectCards = ({ project }) => {
                     <img src={app_preview} 
                     alt={`${app_name} preview`} 
                     className={`bg-zinc-800 w-full h-full bg-cover ${loading ? 'hidden' : ''}`} 
-                    onLoad={() => setLoading(false)}/>
+                    onLoad={() => setLoading(false)}
+                    onClick={() => previewImage(app_preview)}
+                    style={{ cursor: 'pointer' }}/>
                     
                 </div>
 

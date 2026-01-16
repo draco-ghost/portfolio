@@ -3,6 +3,8 @@ import TypeWrite from './util/TypeWrite';
 import { FaLinkedin } from "react-icons/fa6";
 import { FaFacebook, FaGithub } from 'react-icons/fa';
 import Footer from './util/Footer';
+import { OpenDeepLink } from './util/DeepLinkUtils';
+import { trackOutbound } from './util/umami_track';
 
 const LINKED_IN_URL = "https://www.linkedin.com/in/draco-ghost-173385350";
 const LINKEDIN_APP_URL = "linkedin://in/draco-ghost-173385350"; // Deep link
@@ -17,6 +19,8 @@ export default function Home() {
   const isMobi = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
   const handleLinkedIn = () => {
+    trackOutbound(LINKED_IN_URL);
+
     if (isMobi) {
       // On Mobi, try open directly with fallback
       handleLinkedInClick();
@@ -27,6 +31,8 @@ export default function Home() {
   }
 
   const handleFacebook = () => {
+    trackOutbound(FACEBOOK_URL);
+
     if (isMobi) {
       // On Mobi, try open directly with fallback
       OpenDeepLink(FACEBOOK_APP_URL, FACEBOOK_URL);
@@ -41,6 +47,7 @@ export default function Home() {
   }
 
   const handleGithub = () => {
+    trackOutbound(GITHUB_URL);
     window.open(GITHUB_URL, "_blank");
   };
 
@@ -86,6 +93,7 @@ export default function Home() {
   };
 
   const handleFabWebOpen = () => {
+    closeDialog();
     window.open(FACEBOOK_URL, "_blank");
   };
 

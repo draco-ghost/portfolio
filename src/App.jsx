@@ -8,10 +8,14 @@ import Contact from './Components/pages/Contact';
 import { useEffect, useState } from 'react';
 import Dropmenu from './Components/nav/Dropmenu';
 import Source from './Components/pages/Source';
+import { useUmamiPageView } from './util/umami_page';
+import { Preview } from './Components/pages/Preview';
 
 function App() {
 
   const [isRightEn, setIsRightEn] = useState(false);
+
+  useUmamiPageView(); // track every route change
 
   const toggleRight = () => {
     setIsRightEn(!isRightEn);
@@ -33,6 +37,16 @@ function App() {
     };
   }, []);
 
+  /*
+  // ------ Umami: disable on localhost & track outbound links ------
+  useEffect(() => {
+    // Disable tracking on localhost
+    if (window.location.hostname === 'localhost') {
+      localStorage.setItem('umami.disabled', 1);
+    }
+  }, []);
+  */
+
   return (
     <div>
       <div className='w-screen backdrop-blur-3xl'
@@ -49,22 +63,23 @@ function App() {
           </div>
           <div className='relative z-10 backdrop-blur-3xl w-full h-full text-center flex flex-col overflow-hidden overflow-y-auto
                              '>
-            
+
             <Navbar toggleRight={toggleRight} isRightEn={isRightEn} />
-        <Dropmenu isOpen={isRightEn} isClosed={toggleRight} />
-        <div className='flex-grow cont-content overflow-y-auto overflow-hidden'
-        style={{ 
-          minHeight: 0, // Required for flex overflow scroll
-        }}
-        >
-          <Routes>
-            <Route path='/' element={<Home /> } />
-            <Route path='/about' element={<About /> } />
-            <Route path='/projects/*' element={<Project /> } />
-            <Route path='/contact' element={<Contact /> } />
-            <Route path='/p/source' element={<Source /> } />
-          </Routes>
-        </div>
+            <Dropmenu isOpen={isRightEn} isClosed={toggleRight} />
+            <div className='flex-grow cont-content overflow-y-auto overflow-hidden'
+              style={{
+                minHeight: 0, // Required for flex overflow scroll
+              }}>
+
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/projects/*' element={<Project />} />
+                <Route path='/contact' element={<Contact />} />
+                <Route path='/p/source' element={<Source />} />
+                <Route path='/p/image' element={<Preview />} />
+              </Routes>
+            </div>
 
           </div>
         </div>

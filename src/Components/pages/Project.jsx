@@ -1,30 +1,26 @@
-import React, { useState } from 'react';
-import Blocker_app from '../../assets/Blocker_App.png';
-import Blocker_bg from '../../assets/Blocker_App1.png';
-import { useNavigate } from 'react-router-dom';
-import { ClipLoader } from 'react-spinners';
+import React from 'react';
 import ProjectCards from '../../util/ProjectCards';
 import { cardsData } from '../../util/ProjectData';
 
-const BLOCK_GIT = "https://github.com/draco-ghost/blocker_app";
-const BLOCK_DOWNLOAD = "https://github.com/draco-ghost/blocker_app/releases";
 
 const Project = () => {
+  {/* 
+    const navigate = useNavigate();
 
-  const navigate = useNavigate();
+    const handleGithubRepo = () => {
+      window.open(BLOCK_GIT, "_blank");
+    };
 
-  const handleGithubRepo = () => {
-    window.open(BLOCK_GIT, "_blank");
-  };
+    const handleGithubRelease = () => {
+      window.open(BLOCK_DOWNLOAD, "_blank");
+    };
 
-  const handleGithubRelease = () => {
-    window.open(BLOCK_DOWNLOAD, "_blank");
-  };
+    const handleSource = () => {
+      navigate('/p/source')
 
-  const handleSource = () => {
-    navigate('/p/source')
-
-  };
+    };  
+  */}
+  
 
 
   return (
