@@ -6,7 +6,7 @@ export const useUmamiPageView = () => {
 
     useEffect(() => {
         if (window.umami) {
-            window.umami.trackView(location.pathname);
+            window.umami.track("pageview", {path: location.pathname});
         }
     }, [location]);
 };
