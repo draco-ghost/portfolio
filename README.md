@@ -2,7 +2,7 @@
 
 Welcome to my personal portfolio website - a showcase of my work, skills, and passions as a developer and a creator.
 
-🔗 [Live Site](https://draco-ghost-portfolio.pages.dev/)
+🔗 [Live Site](https://draco-ghost-portfolio.pages.dev)
 
 ---
 
