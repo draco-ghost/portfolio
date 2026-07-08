@@ -7,6 +7,9 @@ import { FaHeartBroken } from 'react-icons/fa';
 import axios from 'axios';
 import { useEffect } from 'react';
 
+
+const API_URL = import.meta.env.VITE_API_URL;
+
 const ProjectCards = ({ project }) => {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
@@ -69,8 +72,8 @@ const ProjectCards = ({ project }) => {
 
         try {
             const url = nextLiked
-                ? `http://localhost:3000/api/projects/${id}/like`
-                : `http://localhost:3000/api/projects/${id}/unlike`;
+                ? `${API_ULR}/api/projects/${id}/like`
+                : `${API_ULR}/api/projects/${id}/unlike`;
 
             const { data } = await axios.post(url);
             // sync with backend truth
@@ -113,11 +116,11 @@ const ProjectCards = ({ project }) => {
                         </div>
                     )}
 
-                    <img src={`http://localhost:3000${image_path}`}
+                    <img src={`${API_ULR}${image_path}`}
                         alt={`${name} preview`}
                         className={`bg-zinc-800 w-full h-full bg-cover ${loading ? 'hidden' : ''}`}
                         onLoad={() => setLoading(false)}
-                        onClick={() => previewImage(`http://localhost:3000${image_path}`)}
+                        onClick={() => previewImage(`${API_ULR}${image_path}`)}
                         style={{ cursor: 'pointer' }} />
 
                 </div>

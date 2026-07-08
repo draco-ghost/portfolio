@@ -6,6 +6,10 @@ import { CiCircleMore } from "react-icons/ci";
 import { FaSearch } from 'react-icons/fa';
 import CustomSelect from '../components/CustomSelect';
 
+
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 export const P_Project = () => {
   const [projects, setProjects] = useState([]);
   const [serverDown, setServerDown] = useState(false);
@@ -27,7 +31,7 @@ export const P_Project = () => {
       while (attempt < maxRetries) {
         try {
           const { data } = await axios.get(
-            "http://localhost:3000/api/projects/gt",
+            `${API_ULR}/api/projects/gt`,
             { timeout: 5000 }
           );
 

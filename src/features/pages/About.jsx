@@ -4,6 +4,10 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { AboutCard } from '../components/AboutCard';
 
+
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 export const About = () => {
   const [about, setAbout] = useState([]);
   const [skillData, setskillData] = useState({});
@@ -13,8 +17,8 @@ export const About = () => {
     async function loadData() {
       try {
         const [aboutRes, skillRes] = await Promise.all([
-          axios.get("http://localhost:3000/api/about/ab"),
-          axios.get("http://localhost:3000/api/about/sk")
+          axios.get(`${API_ULR}/api/about/ab`),
+          axios.get(`${API_ULR}/api/about/sk`)
         ]);
 
         setAbout(aboutRes.data);

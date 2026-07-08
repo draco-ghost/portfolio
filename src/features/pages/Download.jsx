@@ -6,6 +6,10 @@ import { DownSkel } from '../../loading/DownSkel';
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
+
+const API_URL = import.meta.env.VITE_API_URL;
+
+
 export const Download = () => {
     const [releases, setReleases] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -18,7 +22,7 @@ export const Download = () => {
         async function loadRelease() {
             try {
                 const { data } = await axios.get(
-                    "http://localhost:3000/api/releases/rl",
+                    `${API_ULR}/api/releases/rl`,
                     { params: { repo } }
                 );
 
@@ -46,7 +50,7 @@ export const Download = () => {
             if (fired) return;
 
             try {
-                    await axios.post(`http://localhost:3000/api/projects/${repoId}/view`);
+                    await axios.post(`${API_ULR}/api/projects/${repoId}/view`);
 
                     fired = true;
                 } catch (err) {
