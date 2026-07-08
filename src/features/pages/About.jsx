@@ -3,6 +3,7 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { AboutCard } from '../components/AboutCard';
+import { AboutSkel } from '../../loading/AboutSkel';
 
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -11,27 +12,50 @@ const API_URL = import.meta.env.VITE_API_URL;
 export const About = () => {
   const [about, setAbout] = useState([]);
   const [skillData, setskillData] = useState({});
-  const [down, setDown] = useState(false);
+  const [serverDown, setServerDown] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadData() {
-      try {
+      const maxRetries = 3;
+      let attempt = 0;
+
+      while (attempt < maxRetries) {
+        try {
         const [aboutRes, skillRes] = await Promise.all([
           axios.get(`${API_URL}/api/about/ab`),
           axios.get(`${API_URL}/api/about/sk`)
         ]);
 
-        setAbout(aboutRes.data);
+          setAbout(aboutRes.data);
         setskillData(skillRes.data);
-        setDown(false);
-      } catch (err) {
-        //console.error(err);
-        setDown(true);
+          setServerDown(false);
+          setLoading(false);
+
+          return; // success, stop retrying
+        } catch (err) {
+          attempt++;
+          console.error(`Request failed. Attempt ${attempt}/${maxRetries}`);
+
+          if (attempt < maxRetries) {
+            // wait before trying again
+            await new Promise(resolve =>{
+              setTimeout(resolve, 1500)
+            });
+          }
+        }
       }
+      // only reached after all retries failed
+      setServerDown(true);
+          setLoading(false);
     };
 
     loadData();
   }, []);
+
+  if (loading) {
+      return <AboutSkel />;
+    }
 
   return (
     <div className='w-full h-full overflow-hidden overflow-y-auto'>
@@ -45,7 +69,7 @@ export const About = () => {
         </div>
 
         <div className='flex-1'>
-          {down && (
+          {serverDown ? (
             <div className='h-full flex items-center justify-center'>
               <div className='md:self-center'>
                 <div className='d_card flex flex-col gap-2 p-4 items-center rounded-2xl h-full'>
@@ -53,7 +77,15 @@ export const About = () => {
                 </div>
               </div>
             </div>
-          )}
+          ) : about.length === 0 ? (
+            <div className='h-full flex items-center justify-center'>
+              <div className='md:self-center'>
+                <div className='d_card flex flex-col gap-2 p-4 items-center rounded-2xl h-full'>
+                  <p className='text-gray-400 font-bold'>No project found</p>
+                </div>
+              </div>
+            </div>
+          ) : (
 
           <div className='w-full about_grid gap-4 p-[clamp(0.5rem,1vw,2rem)]'>
 
@@ -70,6 +102,7 @@ export const About = () => {
             ))}
 
           </div>
+          )}
         </div>
       </div>
     </div>
