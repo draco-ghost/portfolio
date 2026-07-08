@@ -20,7 +20,7 @@ export const SkillCheck = ({ info, checkIcon }) => {
                     </div>
 
                     <div>
-                        <img src={`${API_ULR}${checkIcon}`}
+                        <img src={`${API_URL}${checkIcon}`}
                             alt="check" className='w-6' />
                     </div>
                 </div>

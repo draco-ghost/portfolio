@@ -31,7 +31,7 @@ export const P_Project = () => {
       while (attempt < maxRetries) {
         try {
           const { data } = await axios.get(
-            `${API_ULR}/api/projects/gt`,
+            `${API_URL}/api/projects/gt`,
             { timeout: 5000 }
           );
 

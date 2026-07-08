@@ -22,7 +22,7 @@ export const Download = () => {
         async function loadRelease() {
             try {
                 const { data } = await axios.get(
-                    `${API_ULR}/api/releases/rl`,
+                    `${API_URL}/api/releases/rl`,
                     { params: { repo } }
                 );
 
@@ -50,7 +50,7 @@ export const Download = () => {
             if (fired) return;
 
             try {
-                    await axios.post(`${API_ULR}/api/projects/${repoId}/view`);
+                    await axios.post(`${API_URL}/api/projects/${repoId}/view`);
 
                     fired = true;
                 } catch (err) {

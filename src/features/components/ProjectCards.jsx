@@ -72,8 +72,8 @@ const ProjectCards = ({ project }) => {
 
         try {
             const url = nextLiked
-                ? `${API_ULR}/api/projects/${id}/like`
-                : `${API_ULR}/api/projects/${id}/unlike`;
+                ? `${API_URL}/api/projects/${id}/like`
+                : `${API_URL}/api/projects/${id}/unlike`;
 
             const { data } = await axios.post(url);
             // sync with backend truth
@@ -116,11 +116,11 @@ const ProjectCards = ({ project }) => {
                         </div>
                     )}
 
-                    <img src={`${API_ULR}${image_path}`}
+                    <img src={`${API_URL}${image_path}`}
                         alt={`${name} preview`}
                         className={`bg-zinc-800 w-full h-full bg-cover ${loading ? 'hidden' : ''}`}
                         onLoad={() => setLoading(false)}
-                        onClick={() => previewImage(`${API_ULR}${image_path}`)}
+                        onClick={() => previewImage(`${API_URL}${image_path}`)}
                         style={{ cursor: 'pointer' }} />
 
                 </div>

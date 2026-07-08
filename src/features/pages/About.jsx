@@ -17,8 +17,8 @@ export const About = () => {
     async function loadData() {
       try {
         const [aboutRes, skillRes] = await Promise.all([
-          axios.get(`${API_ULR}/api/about/ab`),
-          axios.get(`${API_ULR}/api/about/sk`)
+          axios.get(`${API_URL}/api/about/ab`),
+          axios.get(`${API_URL}/api/about/sk`)
         ]);
 
         setAbout(aboutRes.data);
