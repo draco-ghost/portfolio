@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  margin-bottom: 10px;
+}
+
+nav a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  background: linear-gradient(to top, #00ff00 0%, #000000 30%);
+}
+
+nav a.active {
+  background: linear-gradient(to top, #004d00 0%, #000000 30%);
+}
+
+nav a.active:hover {
+  background: linear-gradient(to top, #00ff00 0%, #000000 30%);
+  color: #00ff00;
+}
+
+select.modern-select, 
+select.modern-select::picker(select) {
+  appearance: base-select;
+}
+
+/* Style the dropdown menu popover box directly */
+select.modern-select::picker(select) {
+  background-color: #1e1e24;
+  border: 1px solid #3f3f46;
+  border-radius: 8px;
+  padding: 6px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+/* Style the items inside the popup */
+select.modern-select option {
+  padding: 8px 12px;
+  color: #e4e4e7;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+/* Style custom hover states for choices */
+select.modern-select option:hover {
+  background-color: #3f3f46;
+  color: #ffffff;
+}
+
+/* Style or replace the native checkmark icon */
+select.modern-select option::checkmark {
+  color: #38bdf8;
+}

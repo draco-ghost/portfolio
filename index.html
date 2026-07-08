@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/dragon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Draco Ghost</title>
+</head>
+
+<script 
+    defer src="https://cloud.umami.is/script.js" 
+    data-website-id="8be4afaf-3a0e-446f-863b-2d7b88e1793b">
+</script>
+
+<style>
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: linear-gradient(to top left, #004d00 0%, #000000 60%);
+  }
+
+  #root {
+      height: 100%;
+    }
+
+    .loading {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .loading-spinner {
+      height: 200px;
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      justify-content: center;
+      box-sizing: border-box;
+      animation: spin 2s linear infinite;
+    }
+
+    .cont {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top-ball-cont {
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      flex: 1;
+      padding: 15px;
+    }
+
+    .left-right-ball-cont {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex: 1;
+      padding: 15px;
+    }
+
+    .top-ball {
+      background-color: black;
+      width: 60px;
+      height: 60px;
+      box-shadow: 
+        0 0 10px #ff0080,
+        0 0 10px #ff0080,
+        0 0 10px #ff0080;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .left-ball {
+      background-color: black;
+      width: 60px;
+      height: 60px;
+      box-shadow: 
+        0 0 10px #ff0080,
+        0 0 10px #ff0080,
+        0 0 10px #ff0080;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .right-ball {
+      background-color: black;
+      width: 60px;
+      height: 60px;
+      box-shadow: 
+        0 0 10px #ff0080,
+        0 0 10px #ff0080,
+        0 0 10px #ff0080;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .top-ball,
+    .left-ball,
+    .right-ball {
+      border-radius: 50%;
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        opacity: 0.3;
+        transform: scale(0.98);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0.3;
+        transform: scale(0.98);
+      }
+    }
+
+    @media (width <= 425px) {
+      .loading-spinner {
+      height: 150px;
+      width: 150px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .top-ball-cont {
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      flex: 1;
+      padding: 10px;
+    }
+
+    .left-right-ball-cont {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex: 1;
+      padding: 10px;
+    }
+
+    .top-ball,
+    .left-ball,
+    .right-ball {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+    }
+    }
+  </style>
+
+<body>
+  <div id="root">
+    <div class="loading">
+      <div class="loading-spinner">
+        <div class="cont">
+          <div class="top-ball-cont">
+          <div class="top-ball"></div>
+        </div>
+        <div class="left-right-ball-cont">
+          <div class="left-ball"></div>
+          <div class="right-ball"></div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.jsx"></script>
+  
+</body>
+
+</html>

@@ -1,0 +1,224 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@font-face {
+  font-family: "Caprasimo";
+  src: url('/fonts/Caprasimo-Regular.woff2') format('woff2'),
+    url('/fonts/Caprasimo-Regular.woff') format('woff'),
+    url('/fonts/Caprasimo-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  /* this tells browser to use fallback font until custom font is loaded */
+}
+
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100dvh;
+}
+
+body {
+  min-width: 320px;
+
+  display: flex;
+  flex-direction: column;
+
+  font-family: 'caprasimo', mono;
+  background: linear-gradient(to top left, #004d00 0%, #000000 60%);
+}
+
+#root {
+  width: 100%;
+  max-width: 1536px;
+
+  margin-inline: auto;
+
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+h2 {
+  font-size: clamp(1.25rem, 3.5vw, 2rem);
+}
+
+h3 {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+p {
+  font-size: clamp(0.875rem, 2.5vw, 1rem);
+}
+
+.d_card {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.d_card:hover {
+  background: linear-gradient(to top left, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.07) 60%);
+}
+
+.r_card {
+  background: linear-gradient(to top left, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.07) 60%);
+}
+
+.r_card:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.about_card {
+  background: rgba(255, 255, 255, 0.096);
+}
+
+.project_card {
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.project_card:hover {
+  background: linear-gradient(to top left, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.226) 90%);
+}
+
+.project_btn {
+  background: rgba(255, 255, 255, 0.062);
+}
+
+.project_btn:hover {
+  background: linear-gradient(to top left, rgba(255, 255, 255, 0.308) 0%, rgba(255, 255, 255, 0.07) 60%);
+}
+
+.contact_card {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.contact_card:hover {
+  background: linear-gradient(to top left, rgba(255, 255, 255, 0.13) 0%, rgba(255, 255, 255, 0.07) 60%);
+}
+
+.about_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.contact_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.project_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 0.5rem;
+}
+
+.project_skel_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 0.5rem;
+}
+
+.btn_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.5rem;
+}
+
+.btn_source_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.5rem;
+}
+
+.custom_list li::marker {
+  content: '';
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  background-image: url('client/public/star-rings.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: inherit;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background-color: #009900;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #ff0080;
+}
+
+@media (min-width: 1024px) {
+  .contact_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (width <=425px) {
+  .project_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .d_btn {
+    place-items: center;
+  }
+
+  .btn_grid> :last-child {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 426px) and (max-width: 768px) {
+  .project_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 0.5rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .project_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 0.5rem;
+  }
+
+  .btn_grid> :last-child {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .project_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 0.5rem;
+  }
+}
