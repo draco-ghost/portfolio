@@ -2,7 +2,7 @@
 
 Welcome to my personal portfolio website - a showcase of my work, skills, and passions as a developer and a creator.
 
-🔗 [Live Site](https://draco-ghost.github.io/portfolio)
+🔗 [Live Site](https://draco-ghost-portfolio.pages.dev/)
 
 ---
 
@@ -31,12 +31,6 @@ cd portfolio
 npm install
 npm run dev 
 ```
-
----
-
-## 🚀 Deployment
-
-This site is deployed using Github Pages via the [gh-pages](https://www.npmjs.com/package/gh-pages) package.
 
 ---
 
