@@ -1,0 +1,46 @@
+# ==============================
+# Db
+# ==============================
+/DataBase.php
+/DataBaseConfig.php
+/utils/config.php
+
+# ==============================
+# APIs
+# ==============================
+/api/admin/
+/api/token.php
+/services/
+
+# ==============================
+# Cache
+# ==============================
+/cache/
+
+# ==============================
+Node dependencies
+# ==============================
+/node_modules/
+
+# ==============================
+# Environment variables and secrets
+# ==============================
+.env
+.env.*
+!.env.example
+
+# ==============================
+Editor and IDE files
+# ==============================
+.vscode/ .idea/
+
+# ==============================
+Build output (if generated)
+# ==============================
+/dist/ /build/
+
+# ==============================
+Optional local uploads
+Uncomment if uploads should not be pushed
+# ==============================
+/assets/uploads/

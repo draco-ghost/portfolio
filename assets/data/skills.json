@@ -1,0 +1,20 @@
+{
+    "ui-ux": [
+        {"name": "Mobile app design"},
+        {"name": "User flow"},
+        {"name": "Landing page"},
+        {"name": "Web app design"}
+    ],
+    "web": [
+        {"name": "Html"},
+        {"name": "Css"},
+        {"name": "JavaScript"},
+        {"name": "React"}
+    ],
+    "mobile": [
+        {"name": "Java"}
+    ],
+    "desktop": [
+        {"name": "Python"}
+    ]
+}

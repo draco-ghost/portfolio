@@ -1,0 +1,26 @@
+[
+    {
+        "id": "ui-ux",
+        "ui": "/assets/uploads/ui-ux-design.webp",
+        "header": "UI/UX Designs",
+        "check": "/assets/uploads/star-rings.webp"
+    },
+    {
+        "id": "web",
+        "ui": "/assets/uploads/dev-web.webp",
+        "header": "Web development",
+        "check": "/assets/uploads/star-rings.webp"
+    },
+    {
+        "id": "mobile",
+        "ui": "/assets/uploads/mobile-dev.webp",
+        "header": "Mobile app",
+        "check": "/assets/uploads/star-rings.webp"
+    },
+    {
+        "id": "desktop",
+        "ui": "/assets/uploads/dsktop-app.webp",
+        "header": "Desktop app",
+        "check": "/assets/uploads/star-rings.webp"
+    }
+]

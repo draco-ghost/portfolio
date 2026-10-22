@@ -1,0 +1,16 @@
+DirectoryIndex index.php index.html index.htm index2.html
+
+RewriteEngine On
+
+# Forward the Authorization header to PHP
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+# Route nonexistent paths through index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,l]
+
+# Protect db config files
+<FilesMatch "^(DataBaseConfig\.php|\.env)$">
+    Require all denied
+</FilesMatch>
