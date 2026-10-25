@@ -137,7 +137,7 @@ async function router() {
             app.innerHTML = html;
         }
     } catch (error) {
-        console.error(error);
+        console.error('Failed to fetch page');
 
         app.innerHTML = `
             <div class="flex min-h-full items-center justify-center">
