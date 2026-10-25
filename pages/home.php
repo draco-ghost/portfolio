@@ -96,7 +96,7 @@
                             Clicking "Open in App" will try to open the LinkedIn app if it's installed
                         </p>
                     </div>
-                    <div class="flex flex-col items-center gap-2 w-fit">
+                    <div class="flex flex-col mt-2 items-center gap-2 w-fit">
                         <div>
                             <button type="button" id="linkedin_app_btn"
                                 class="modal_btn">Open in App</button>
@@ -130,7 +130,7 @@
                             Clicking "Open in App" will try to open the Facebook app if it's installed
                         </p>
                     </div>
-                    <div class="flex flex-col items-center gap-2 w-fit">
+                    <div class="flex flex-col mt-2 items-center gap-2 w-fit">
                         <div>
                             <button type="button" id="facebook_app_btn"
                                 class="modal_btn">Open in App</button>

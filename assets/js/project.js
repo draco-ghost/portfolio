@@ -75,14 +75,14 @@ export async function init() {
                 break;
 
             case "releases":
-                url = project.release_link;
+                url = `/releases/${encodeURIComponent(project.name)}`;
                 break;
             default:
                 return;
         };
 
-        if (action === "source") {
-            window.location.href = url;
+        if (action === "source" || action === "releases") {
+            window.navigate(url);
             return;
         }
 
@@ -207,10 +207,6 @@ export async function init() {
                     headers: { "Accept": "application/json" },
                     signal: controller.signal,
                 });
-
-                const cachedStatus = res.headers.get("X-Projects-Cache");
-
-                console.log("Project API cache status:", cachedStatus);
 
                 if (!res.ok) {
                     throw new Error(`HTTP error: ${res.status}`);
@@ -426,6 +422,42 @@ export async function init() {
         return result;
     }
 
+    function initProjectImages() {
+        const images = projectsGrid.querySelectorAll(".project_img");
+
+        images.forEach((img) => {
+            const container = img.closest(".project_image");
+            const spinner = container?.querySelector(".image_spinner");
+
+            function finishLoading() {
+                spinner?.classList.add('hidden');
+                img.classList.remove('opacity-0');
+                img.classList.add('opacity-100');
+            }
+
+            img.addEventListener("load", finishLoading, { once: true });
+
+            img.addEventListener("error", () => {
+                if (!img.dataset.fallbackUsed) {
+                    img.dataset.fallbackUsed = "true";
+                    img.src = "/assets/uploads/default.webp";
+                    return;
+                }
+                // Even the fallback failed: stop spinning.
+                finishLoading();
+            }, { once: true });
+
+            // Handle cached images that loaded before the event listener
+            if (img.complete) {
+                if (img.naturalWidth > 0) {
+                    finishLoading();
+                } else {
+                    img.dispatchEvent(new Event('error'));
+                }
+            }
+        });
+    }
+
     // Render projects
     function renderProjects() {
         if (serverDown) {
@@ -465,17 +497,22 @@ export async function init() {
                             </div>
                         </div>
 
-                        <div class='w-full h-50 relative'>
-                            ${project.image_path
-                                ? `
-                                    <img
-                                        src="${project.image_path}"
-                                        alt="${escapeHtml(project.name || "")}"
-                                        class="w-full h-48 object-cover mb-3"
-                                    >
-                                `
-                                : ""
-                            }
+                        <div class='project_image relative w-full h-50 overflow-hidden'>
+                            <div class="image_spinner absolute inset-0 z-10 flex items-center justify-center pointer-events-none"
+                                aria-label="Loading image" role="status">
+                                <div class="h-8 w-8 rounded-full border-4 border-green-500/20 border-t-green-500 animate-spin"></div>
+                            </div>
+
+                            <img
+                                src="${
+                                    project.image_path 
+                                        ? escapeHtml(project.image_path)
+                                        : '/assets/uploads/default.webp'
+                                    }"
+                                alt="${escapeHtml(project.name || "")}"
+                                class="project_img absolute inset-0 w-full h-full object-cover mb-3 opacity-0 transition-opacity duration-300"
+                                loading="lazy"
+                            >
                         </div>
 
                         <div class='flex flex-col place-content-center flex-1'>
@@ -533,6 +570,8 @@ export async function init() {
             `;
 
         }).join("");
+
+        initProjectImages();
     }
 
     // Html escape

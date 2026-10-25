@@ -9,6 +9,7 @@
 # APIs
 # ==============================
 /api/admin/
+/admin/
 /api/token.php
 /services/
 
@@ -16,6 +17,11 @@
 # Cache
 # ==============================
 /cache/
+
+# ==============================
+# Composer dependencies
+# ==============================
+/vendor/
 
 # ==============================
 Node dependencies
@@ -44,3 +50,8 @@ Optional local uploads
 Uncomment if uploads should not be pushed
 # ==============================
 /assets/uploads/
+
+# ==============================
+# ZIP file
+# ==============================
+/vendor.zip

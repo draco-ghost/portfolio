@@ -11,7 +11,7 @@
     </div>
     <div class="relative h-10 w-10 overflow-hidden rounded-full bg-green-500 p-0.5">
         <div class="logo">
-            <img src="/assets/images/dragon_logo.png" alt="draco_logo"
+            <img src="/assets/images/dragon_logo.webp" alt="draco_logo"
                 class="rounded-full">
         </div>
     </div>

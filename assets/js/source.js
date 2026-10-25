@@ -1,4 +1,4 @@
-export async function init(projectId) {
+export async function init(projectId, projectName) {
     const sourceContent = document.getElementById("sourceContent");
 
     const kofiBtn = document.getElementById("kofiBtn");
@@ -53,7 +53,6 @@ export async function init(projectId) {
     });
 
     sourceBack.addEventListener("click", () => {
-        console.log("Back clicked");
         window.history.back();
     });
 }

@@ -98,10 +98,12 @@ async function router() {
 
     let route = routes[path];
     let projectId = null;
+    let projectName = null;
 
-    // Dynamic route: /123/source
-    // Also supports a trailing slash: /123/source/
+    // Dynamic route: /123/source or /release/project_name
+    // Also supports a trailing slash: /123/source/ or /release/project_name/
     const sourceMatch = path.match(/^\/([^/]+)\/source\/?$/);
+    const releasesMatch = path.match(/^\/releases\/([^/]+)\/?$/);
 
     if (sourceMatch) {
         projectId = decodeURIComponent(sourceMatch[1]);
@@ -112,6 +114,15 @@ async function router() {
         };
     }
 
+    if (releasesMatch) {
+        projectName = decodeURIComponent(releasesMatch[1]);
+
+        route = {
+            page: "/pages/release.php",
+            script: "/assets/js/releases.js"
+        };
+    }
+
     try {
         if (route) {
             const html = await fetchPage(route.page);
@@ -119,7 +130,7 @@ async function router() {
             // Insert php page into #app
             app.innerHTML = html;
             // load page specific javascript
-            await loadPageScript(route.script, projectId);
+            await loadPageScript(route.script, projectId, projectName);
         } else {
             const html = await fetchPage("/pages/404.php");
             if (html === null) return;
@@ -154,14 +165,14 @@ function navigate(path) {
 // Make navigate available to other javascript modules
 window.navigate = navigate;
 
-async function loadPageScript(scriptSrc, projectId = null) {
+async function loadPageScript(scriptSrc, projectId = null, projectName = null) {
     try {
         const module = await import(scriptSrc);
 
         if (typeof module.init === "function") {
             // Static pages receive null.
             // Source pages receive the project ID.
-            await module.init(projectId);
+            await module.init(projectId, projectName);
         }
     } catch (error) {
         console.error(
