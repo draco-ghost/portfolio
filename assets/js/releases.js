@@ -30,6 +30,23 @@ export async function init(projectId, projectName) {
         window.history.back();
     });
 
+    allReleases.addEventListener("click", (e) => {
+        const btn = e.target.closest('[data-action="asset_top"]');
+
+        if (!btn || !allReleases.contains(btn)) return;
+
+        // Find only the release card that was clicked
+        const card = btn.closest("[data-project-id]");
+        if (!card) return;
+        // Find the assets layout inside this card onlyy
+        const assetCont = card.querySelector('[data-action="asset_cont"]');
+        const arrow = btn.querySelector(".asset_arrow");
+        if (!assetCont || !arrow) return;
+        // Toggle visibility
+        assetCont.classList.toggle('is_collapsed');
+        arrow.classList.toggle("is_rotated");
+    });
+
     function showLoading() {
         noReleases.classList.add("hidden");
         allReleases.classList.add("hidden");
@@ -187,7 +204,7 @@ export async function init(projectId, projectName) {
                     <div class="flex flex-wrap items-center gap-2">
                         ${downloadUrl ? `
                             <a href="${escapeHtml(downloadUrl)}"
-                                class="download_btn flex gap-2 w-fit rounded-2xl p-[4px_20px]"
+                                class="releases_btn flex gap-2 w-fit rounded-2xl p-[4px_20px]"
                                 target="_blank" rel="noopener noreferrer">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" 
                                         viewBox="0 -960 960 960" width="24px" fill="currentColor">
@@ -226,33 +243,56 @@ export async function init(projectId, projectName) {
                         ${assetsHtmlCount}
                     </div>
 
-                    <p class="text-xs text-gray-400 mt-2">
-                        ${escapeHtml(date)}
-                    </p>
+                    <div class="flex gap-2 items-center">
+                        <p class="text-xs text-gray-400 mt-2">
+                            Published at
+                        </p>
+                        <p class="published_date text-xs text-gray-400 mt-2">
+                            ${escapeHtml(date)}
+                        </p>
+                    </div>
 
                     <div class="release_markdown mt-1 text-sm wrap-break-word">
                         ${body}
                     </div>
 
-                    <div class="w-full place-items-end flex flex-col gap-2">
-                        <div class="mt-1 text-white flex flex-col gap-2">
-                            ${assetsHtml || `
-                                <p class="text-sm text-gray-400">
-                                    No downloadable assets.
-                                </p>
-                            `}
+                    <div class="w-full">
+                        <div data-action="asset_top" 
+                            class="w-full">
+                            <div class="asset_top w-full mt-1 flex gap-2 items-center">
+                                <svg class="asset_arrow"
+                                    xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                                width="24px" fill="currentColor">
+                                    <path d="M480-360 280-560h400L480-360Z"/>
+                                </svg>
+                                <p>Assets</p>
+                            </div>
                         </div>
 
-                        ${releaseUrl ? `
-                            <a
-                                href="${escapeHtml(releaseUrl)}"
-                                target="_blank"
-                                rel="noopener noreferrer">
-                                <div class='flex w-fit items-center border-b rounded-2xl text-blue-500 hover:text-white gap-2 p-[4px_20px]'>
-                                    View release on Github
+                        <div data-action="asset_cont" class="asset_cont p-2 w-full">
+                            <div class="asset_items flex flex-col gap-3">
+                                <div class="assts mt-1 border text-white flex flex-col gap-2">
+                                    ${assetsHtml || `
+                                        <p class="text-sm text-gray-400">
+                                            No downloadable assets.
+                                        </p>
+                                    `}
                                 </div>
-                            </a>
-                        ` : ""}
+
+                                <div>
+                                    ${releaseUrl ? `
+                                        <a
+                                            href="${escapeHtml(releaseUrl)}"
+                                            target="_blank"
+                                            rel="noopener noreferrer">
+                                            <div class='releases_btn flex w-fit items-center text-white rounded-2xl gap-2 p-[4px_20px]'>
+                                                View release on Github
+                                            </div>
+                                        </a>
+                                    ` : ""}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             `;

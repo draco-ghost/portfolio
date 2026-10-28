@@ -51,6 +51,13 @@ function toggleSidebar() {
 menuBtn?.addEventListener('click', toggleSidebar);
 sidebarOverlay?.addEventListener('click', closeSidebar);
 
+// Automatically close the mobile menu if the screen resizes to desktop (lg: 1024px+)
+window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) {
+        closeSidebar();
+    }
+});
+
 async function fetchPage(url) {
     const response = await fetch(url);
     const html = await response.text();
@@ -88,6 +95,16 @@ async function fetchPage(url) {
     return html;
 }
 
+function setActiveLink() {
+    const currentPath = window.location.pathname;
+    document.querySelectorAll('#sidebarNav nav a[data-link], #sidebar nav a[data-link]')
+        .forEach(link => {
+            const linkPath = new URL(link.href).pathname;
+
+            link.classList.toggle('active', linkPath === currentPath);
+        });
+}
+
 async function router() {
     if (!app) {
         console.error("App container not found");
@@ -102,11 +119,12 @@ async function router() {
 
     // Dynamic route: /123/source or /release/project_name
     // Also supports a trailing slash: /123/source/ or /release/project_name/
-    const sourceMatch = path.match(/^\/([^/]+)\/source\/?$/);
+    const sourceMatch = path.match(/^\/([^/]+)\/source\/([^/]+)\/?$/);
     const releasesMatch = path.match(/^\/releases\/([^/]+)\/?$/);
 
     if (sourceMatch) {
         projectId = decodeURIComponent(sourceMatch[1]);
+        projectName = decodeURIComponent(sourceMatch[2]);
 
         route = {
             page: "/pages/source.php",
@@ -129,12 +147,15 @@ async function router() {
             if (html === null) return;
             // Insert php page into #app
             app.innerHTML = html;
+            // Update active sidebar link
+            setActiveLink();
             // load page specific javascript
             await loadPageScript(route.script, projectId, projectName);
         } else {
             const html = await fetchPage("/pages/404.php");
             if (html === null) return;
             app.innerHTML = html;
+            setActiveLink();
         }
     } catch (error) {
         console.error('Failed to fetch page');

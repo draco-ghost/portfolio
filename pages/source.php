@@ -1,20 +1,19 @@
 <div class='h-full w-full flex overflow-hidden'>
-    <div class=' flex flex-col w-full'>
+    <div class=' flex flex-col w-full min-h-0 min-w-0'>
 
-        <div class="flex items-center">
-            <div id="sourceBack"
-                class="backBtn">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                    height="24px" viewBox="0 -960 960 960"
-                    width="24px" fill="currentColor">
-                    <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
-                </svg>
-            </div>
-        </div>
+        <div class='flex-1 relative min-h-0 min-w-0 pb-2 overflow-hidden'>
+            <div class='h-full min-h-0 min-w-0 flex flex-col w-full overflow-hidden'>
 
-        <div class='flex-1 pb-5 overflow-y-auto'>
-            <div class='h-full flex flex-col w-full'>
-                <div class='flex-1 w-full flex items-center justify-center'>
+                <div id="noSources" class='hidden flex-1 w-full flex items-center justify-center'>
+                    <div class='w-full md:self-center'>
+
+                        <div class='d_card w-full min-w-[75%] flex flex-col gap-2 items-center md:rounded-2xl h-full'>
+                            No source code found
+                        </div>
+                    </div>
+                </div>
+
+                <div id="noSourcesAllowed" class='hidden flex-1 w-full flex items-center justify-center'>
                     <div class='w-full md:self-center'>
 
                         <div id="sourceContent"
@@ -71,6 +70,55 @@
 
                     </div>
                 </div>
+
+                <div id="loadingAllSources" class="hidden flex-1 w-full flex">
+                    <div class="loadingAllSourcesCont">
+                        <div class="flex flex-col gap-2 border border-green-500/20 w-full h-full animate-pulse p-2 rounded-2xl">
+                            <div class='flex flex-col gap-2'>
+
+                                <div class='bg-green-500/20 w-full h-8 animate-pulse p-[0px_20px] rounded-2xl'></div>
+                                <div class='bg-green-500/20 w-full h-8 animate-pulse p-[0px_20px] rounded-2xl'></div>
+
+                            </div>
+                            <div class='flex flex-col gap-2 border border-green-500/20 w-full h-full animate-pulse p-2 rounded-2xl'>
+                                <?php for ($i = 0; $i < 2; $i++): ?>
+                                    <div class="flex gap-2">
+                                        <div class='bg-green-500/20 w-10 h-8 animate-pulse p-[0px_20px] rounded-2xl'></div>
+                                        <div class='bg-green-500/20 w-full h-8 animate-pulse p-[0px_20px] rounded-2xl'></div>
+                                    </div>
+                                    <div class="subTree">
+                                        <?php for ($j = 0; $j < 4; $j++): ?>
+                                            <div class="flex gap-2">
+                                                <div class='bg-green-500/20 w-10 h-8 animate-pulse p-[0px_20px] rounded-2xl'></div>
+                                                <div class='bg-green-500/20 w-full h-8 animate-pulse p-[0px_20px] rounded-2xl'></div>
+                                            </div>
+                                        <?php endfor; ?>
+                                    </div>
+                                <?php endfor; ?>
+
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-2 border border-green-500/20 w-full h-full animate-pulse p-2 rounded-2xl">
+                            <div class='flex flex-col gap-2'>
+                                <div class='bg-green-500/20 w-full h-8 animate-pulse p-[0px_20px] rounded-2xl'></div>
+                            </div>
+                            <div class='flex flex-col gap-2 border border-green-500/20 w-full h-full animate-pulse rounded-2xl'>
+                                <?php for ($j = 0; $j < 4; $j++): ?>
+                                    <div class="flex gap-2 p-2 border-b border-green-500/20">
+                                        <div class='bg-green-500/20 w-full h-8 animate-pulse p-[0px_20px] rounded-2xl'></div>
+                                        <div class='bg-green-500/20 w-10 h-8 animate-pulse p-[0px_20px] rounded-2xl'></div>
+                                    </div>
+                                <?php endfor; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="allSources" class="hidden flex-1 min-h-0 min-w-0 w-full flex overflow-hidden">
+                    
+                </div>
+
             </div>
         </div>
     </div>

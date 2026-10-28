@@ -55,3 +55,8 @@ Uncomment if uploads should not be pushed
 # ZIP file
 # ==============================
 /vendor.zip
+
+# =========================
+# allow list
+# =========================
+/api/repo_allowlist.php

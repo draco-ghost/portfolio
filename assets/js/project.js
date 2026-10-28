@@ -71,7 +71,7 @@ export async function init() {
                 break;
 
             case "source":
-                url = `/${encodeURIComponent(project.id)}/source`;
+                url = `/${encodeURIComponent(project.id)}/source/${encodeURIComponent(project.name)}`;
                 break;
 
             case "releases":
@@ -82,7 +82,7 @@ export async function init() {
         };
 
         if (action === "source" || action === "releases") {
-            window.navigate(url);
+            window.location.assign(url);
             return;
         }
 
@@ -523,13 +523,26 @@ export async function init() {
 
                             ${project.name === "portfolio" ? (
                                 `
-                                    <div class='flex mt-2 mb-2 px-6 items-center'>
-                                        <div class="w-full">
-                                            <div role='button' data-action='github'
-                                                class='project_btn rounded-3xl text-center w-full'>
-                                                Github
+                                    <div class="flex flex-col">
+
+                                        <div class='port_btn_grid mt-2 mb-2 p-[clamp(0.5rem,1vw,2rem)]'>
+
+                                                <div>
+                                                    <div role='button' data-action='github'
+                                                        class='project_btn rounded-3xl text-center w-full'>
+                                                        Github
+                                                    </div>
+                                                </div>
+
+                                                <div>
+                                                    <div role='button' data-action='source'
+                                                        class='project_btn rounded-3xl text-center'>
+                                                        Source Code
+                                                    </div>
+                                                </div>
+
                                             </div>
-                                        </div>
+
                                     </div>
                                 `
                             ) : (
